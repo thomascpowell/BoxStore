@@ -1,16 +1,21 @@
 public class Fruit extends FoodItem {
   
-  boolean citric;
+  boolean citrus;
 
-  public Fruit(String name, double price, String expiration, boolean citric) {
+  public Fruit(String name, double price, String expiration, boolean citrus) {
     super(name, price, expiration);
-    this.citric = citric;
+    this.citrus = citrus;
   }
 
-  public boolean isCitric() {
-    return citric;
+  public boolean isCitrus() {
+    return citrus;
   }
-  public void setCitric(boolean citric) {
-    this.citric = citric;
+  public void setCitrus(boolean citrus) {
+    this.citrus = citrus;
+  }
+
+  public String toString() {
+    return String.format("Quantity: %d; Name: %s; Price: %.2f; Expiration: %s; Citrus: %b",
+    this.getQuantity(), this.getName(), this.getPrice(), this.getExpiration(), this.isCitrus());
   }
 }

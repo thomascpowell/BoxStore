@@ -14,4 +14,8 @@ public class Vegetable extends FoodItem {
     this.green = green;
   }
 
+  public String toString() {
+    return String.format("Quantity: %d; Name: %s; Price: %.2f; Expiration: %s; Green: %b",
+    this.getQuantity(), this.getName(), this.getPrice(), this.getExpiration(), this.isGreen());
+  }
 }

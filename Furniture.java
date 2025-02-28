@@ -12,4 +12,9 @@ public class Furniture extends HouseholdItem {
   public void setLegs(int legs) {
     this.legs = legs;
   }
+
+  public String toString() {
+    return String.format("Quantity: %d; Name: %s; Price: %.2f; Fragile: %b; Material: %s; Legs: %d",
+    this.getQuantity(), this.getName(), this.getPrice(), this.isFragile(), this.getMaterial(), this.getLegs());
+  }
 }

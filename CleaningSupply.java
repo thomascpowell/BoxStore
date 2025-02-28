@@ -2,7 +2,7 @@ public class CleaningSupply extends HouseholdItem {
  
   private boolean sprayBottle;
 
-  public CleaningSupply(int quantity, String name, double price, boolean fragile, String material, boolean sprayBottle) {
+  public CleaningSupply(String name, double price, boolean fragile, String material, boolean sprayBottle) {
     super(name, price, fragile, material);
     this.sprayBottle = sprayBottle;
   }
@@ -14,4 +14,8 @@ public class CleaningSupply extends HouseholdItem {
     this.sprayBottle = sprayBottle;
   }
 
+  public String toString() {
+    return String.format("Quantity: %d; Name: %s; Price: %d; Fragile: %b; Material: %s; Spray Bottle: %b",
+    this.getQuantity(), this.getName(), this.getPrice(), this.isFragile(), this.getMaterial(), this.isSprayBottle());
+  }
 }

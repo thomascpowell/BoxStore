@@ -14,7 +14,4 @@ public class FoodItem extends Item {
     this.expiration = expiration;
   }
 
-  public String toString() {
-    return this.getName() + ", " + this.getPrice() + ", " + this.getExpiration();
-  }
 }

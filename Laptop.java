@@ -12,4 +12,9 @@ public class Laptop extends ElectronicItem {
   public void setProcessor(String processor) {
     this.processor = processor;
   }
+
+  public String toString() {
+    return String.format("Quantity: %d; Name: %s; Price: %.2f; Fragile: %b; Release: %d; Processor: %s",
+    this.getQuantity(), this.getName(), this.getPrice(), this.isFragile(), this.getReleaseYear(), this.getProcessor());
+  }
 }

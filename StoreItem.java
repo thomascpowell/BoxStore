@@ -15,7 +15,4 @@ public class StoreItem extends Item {
     this.fragile = fragile;
   } 
 
-  public String toString() {
-    return this.getName() + ", " + this.getPrice() + ", " + this.isFragile();
-  }
 }
