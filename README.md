@@ -6,7 +6,7 @@
     description, and return policy."
 
     - Is brand just the name? or do we actually need a new field for this
-    - Return policy can be a manually updated field (not in constructor)
+    - (Added) Return policy can be a manually updated field (not in constructor)
       with default at 30 days or something
     - Should we generate a description using the atributes we already have
       or do we need a new field

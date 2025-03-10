@@ -2,12 +2,14 @@ public class Item {
   private String name;
   private double price;
   private int quantity;
+  private int returnPolicy;
 
   public Item(String name, double price) {
     this.quantity = 1; // for use in WQS class
+    this.returnPolicy = 30; // default 30 days, 2 for food items
     this.name = name;
     this.price = price;
-
+  
   }
 
   public String getName() {
@@ -19,6 +21,9 @@ public class Item {
   public int getQuantity() {
     return quantity;
   }
+  public int getReturnPolicy() {
+    return returnPolicy;
+  }
 
   public void setName(String name) {
     this.name = name;
@@ -28,5 +33,8 @@ public class Item {
   }
   public void setQuantity(int quantity) {
     this.quantity = quantity;
+  }
+  public void setReturnPolicy(int returnPolicy) {
+    this.returnPolicy = returnPolicy;
   }
 }
