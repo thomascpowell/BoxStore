@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 // TODO: Change the file name to include names
-// TODO: Document
+// TODO: Document code
 
 public class WQS {
 
@@ -95,13 +95,28 @@ public class WQS {
       }
       if (choice == -1) {
         // TODO: Handle new object creation, reflection helper class?
+      } else {
+        System.out.println("Invalid input.");
       }
     }
   }
 
+  private String generateTable(ArrayList<Item> items) {
+    // TODO: For sellItem
+    // "Displays available options in a table format for the selected category, 
+    // including details such as the item name, price, brand (if applicable),
+    // description, and return policy."
+    return "";
+  }
+
+  private String generateOrderSummary(ArrayList<Item> items) {
+    // TODO: For sellItem
+    // "Displays an order summary (group item types together in output)"
+    return "";
+  }
+
   private void sellItem(Scanner in) {
-    // TODO: Basically copy addItem
-    // TODO: Build generateTable based on nearest ancestor + adtl. info col
+    // TODO: Basically copy addItem, but use generateTable to display info
   }
 
   public static void main(String[] args) {
