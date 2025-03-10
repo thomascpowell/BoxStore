@@ -6,7 +6,7 @@ public class Item {
 
   public Item(String name, double price) {
     this.quantity = 1; // for use in WQS class
-    this.returnPolicy = 30; // default 30 days, 2 for food items
+    this.returnPolicy = 30; // default 30 days, for use in sellItem
     this.name = name;
     this.price = price;
   
