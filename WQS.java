@@ -67,7 +67,8 @@ public class WQS {
       System.out.print("\nInput FoodItem, ElectronicItem, Outerwear, HouseholdItem or 0 to exit: ");
       String target = in.next();
       if (target.equals("0")) {
-        System.out.println("Exiting.");
+        System.out.println("Exiting. Updated Inventory:");
+        this.printItems(inventory);
         break;
       }
       ArrayList<Item> items = getItemsWithInstanceOf(target);
@@ -85,18 +86,18 @@ public class WQS {
         return;
       }
 
-      if (0 < choice && choice < items.size()) {
-        Item selection = items.get(choice);
+      if (0 < choice && choice < items.size()+1) {
+        Item selection = items.get(choice-1);
         System.out.printf("How many %ss should be added? ", selection.getName());
-        items.get(choice).setQuantity(selection.getQuantity() + in.nextInt());
+        selection.setQuantity(selection.getQuantity() + in.nextInt());
       }
-      if (choice == 0) {
+      else if (choice == 0) {
         break;
       }
-      if (choice == -1) {
+      else if (choice == -1) {
         // TODO: Handle new object creation, reflection helper class?
       } else {
-        System.out.println("Invalid input.");
+        System.out.println("Invalid input");
       }
     }
   }
