@@ -1,8 +1,8 @@
 public class TV extends ElectronicItem {
   private String resolution;
 
-  public TV(String name, double price, boolean fragile, int releaseYear, String resolution) {
-    super(name, price, fragile, releaseYear);
+  public TV(String name, double price, String brand, String description, boolean fragile, int releaseYear, String resolution) {
+    super(name, price, brand, description, fragile, releaseYear);
     this.resolution = resolution;
   }
 

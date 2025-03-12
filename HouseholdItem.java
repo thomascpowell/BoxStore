@@ -2,8 +2,8 @@ public class HouseholdItem extends StoreItem {
 
   private String material;
 
-  public HouseholdItem(String name, double price, boolean fragile, String material) {
-    super(name, price, fragile);
+  public HouseholdItem(String name, double price, String brand, String description, boolean fragile, String material) {
+    super(name, price, brand, description, fragile);
     super.setReturnPolicy(30);
     this.material = material;
   }

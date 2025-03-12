@@ -1,8 +1,8 @@
 public class Phone extends ElectronicItem {
   private String formFactor;
 
-  public Phone(String name, double price, boolean fragile, int releaseYear, String formFactor) {
-    super(name, price, fragile, releaseYear);
+  public Phone(String name, double price, String brand, String description, boolean fragile, int releaseYear, String formFactor) {
+    super(name, price, brand, description, fragile, releaseYear);
     this.formFactor = formFactor;
   }
 

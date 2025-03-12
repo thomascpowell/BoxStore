@@ -2,8 +2,8 @@ public class StoreItem extends Item {
   private boolean fragile;
 
 
-  public StoreItem(String name, double price, boolean fragile) {
-    super(name, price);
+  public StoreItem(String name, double price, String brand, String description, boolean fragile) {
+    super(name, price, brand, description);
     this.fragile = fragile;
   }
 

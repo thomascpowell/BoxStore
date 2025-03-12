@@ -1,8 +1,8 @@
 public class Laptop extends ElectronicItem {
   private String processor;
 
-  public Laptop(String name, double price, boolean fragile, int releaseYear, String processor) {
-    super(name, price, fragile, releaseYear);
+  public Laptop(String name, double price, String brand, String description, boolean fragile, int releaseYear, String processor) {
+    super(name, price, brand, description, fragile, releaseYear);
     this.processor = processor;
   }
 

@@ -2,8 +2,8 @@ public class Outerwear extends StoreItem {
 
   private int size;
 
-  public Outerwear(String name, double price, boolean fragile, int size) {
-    super(name, price, fragile);
+  public Outerwear(String name, double price, String brand, String description, boolean fragile, int size) {
+    super(name, price, brand, description, fragile);
     this.size = size;
   }
 
