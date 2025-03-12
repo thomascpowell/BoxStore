@@ -4,6 +4,7 @@ public class ElectronicItem extends StoreItem {
 
   public ElectronicItem(String name, double price, boolean fragile, int releaseYear) {
     super(name, price, fragile);
+    super.setReturnPolicy(90);
     this.releaseYear = releaseYear;
   }
 
