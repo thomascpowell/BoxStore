@@ -1,3 +1,5 @@
+Todo:
+
 1. Implement 3 unfinshed functions (sellItem Related)
 
 2. Deal with this part:
@@ -7,7 +9,7 @@
     - Need new fields
 
 3. "Displays return policy for item categories sold."
-    - Implies that each category has as fixed return policy
+    - Implies that each category has a fixed return policy
 
 4. Document functions
 
