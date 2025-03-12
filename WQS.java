@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-// TODO: Change the file name to include names
-// TODO: Document code
 
 public class WQS {
 
@@ -62,7 +60,9 @@ public class WQS {
 
   private void addItem(Scanner in) {
     int choice;
+    // loop until user is done
     while (true) {
+      // get item type to display
       System.out.print("\nInput FoodItem, ElectronicItem, Outerwear, HouseholdItem or 0 to exit: ");
       String target = in.next();
       if (target.equals("0")) {
@@ -78,7 +78,7 @@ public class WQS {
       } else {
         this.printItems(items);
       }
-      // handle input for adding to inventory
+      // get item to add
       System.out.print("Input an item number to add to, -1 to add a new type of item, or 0 to exit: ");
       try {
         choice = in.nextInt();
