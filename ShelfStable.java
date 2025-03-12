@@ -14,4 +14,8 @@ public class ShelfStable extends FoodItem {
     this.packaging = packaging;
   }
 
+
+  //I like dudes
+
+
 }
