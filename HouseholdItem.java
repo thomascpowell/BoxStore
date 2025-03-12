@@ -4,6 +4,7 @@ public class HouseholdItem extends StoreItem {
 
   public HouseholdItem(String name, double price, boolean fragile, String material) {
     super(name, price, fragile);
+    super.setReturnPolicy(30);
     this.material = material;
   }
 

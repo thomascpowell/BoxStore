@@ -1,18 +1,17 @@
 Todo:
 
-1. Implement 3 unfinshed functions (sellItem Related)
-
-2. Deal with this part:
+1. Deal with this part:
     "Displays available options in a table format for the selected category, 
     including details such as the item name, price, brand (if applicable), 
     description, and return policy."
-    - Need new fields
+    - Need new fields in Item (String brand, String description)
+    - Update constructors
 
-3. "Displays return policy for item categories sold."
-    - Implies that each category has a fixed return policy
+2. Implement 3 unfinished functions (sellItem Related)
+   - Depends on #1
 
-4. Document functions
+3. Document functions
 
-5. UML documents
+4. UML documents
 
-6. Submit
+5. Submit

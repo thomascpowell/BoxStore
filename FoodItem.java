@@ -4,6 +4,7 @@ public class FoodItem extends Item {
 
   public FoodItem(String name, double price, String expiration) {
     super(name, price);
+    super.setReturnPolicy(7);
     this.expiration = expiration;
     super.setReturnPolicy(2); // return policy for food is shorter
   }
