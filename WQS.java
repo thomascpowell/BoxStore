@@ -32,7 +32,6 @@ public class WQS {
       in.nextLine();
       return 42;
     }
-
   }
 
   private void printItems(ArrayList<Item> items) {
@@ -71,34 +70,50 @@ public class WQS {
         this.printItems(inventory);
         break;
       }
+      // print items of specified ancestor class
       ArrayList<Item> items = getItemsWithInstanceOf(target);
       if (items.size() == 0) {
+        System.out.println("No items right now.");
         continue;
+      } else {
+        this.printItems(items);
       }
-
-      this.printItems(items);
+      // handle input for adding to inventory
       System.out.print("Input an item number to add to, -1 to add a new type of item, or 0 to exit: ");
-
       try {
         choice = in.nextInt();
       } catch (Exception InputMismatchException) {
         System.out.println("Invalid input.");
-        return;
+        continue;
       }
-
+      // case: add to current item
       if (0 < choice && choice < items.size()+1) {
         Item selection = items.get(choice-1);
         System.out.printf("How many %ss should be added? ", selection.getName());
         selection.setQuantity(selection.getQuantity() + in.nextInt());
+        continue;
       }
-      else if (choice == 0) {
-        break;
+      // case: exit current item type
+      if (choice == 0) {
+        continue;
       }
-      else if (choice == -1) {
-        // TODO: Handle new object creation, reflection helper class?
-      } else {
-        System.out.println("Invalid input");
+      // case: add new item type
+      if (choice == -1) {
+        // ItemFactory abstracts most of this
+        System.out.print("Input item type: [Fruit, Laptop, Outerwear, Phone, Shirt, TV, Vegetable]: ");
+        try {
+          Item res = ItemFactory.createItem(in.next());
+          if (res == null) {throw new Exception();}
+          inventory.add(res);
+          continue;
+        } catch (Exception e) {
+          System.out.println("Error creating new item.");
+          in.nextLine();
+          continue;
+        }
       }
+      System.out.println("Invalid input.");
+      in.nextLine();
     }
   }
 
