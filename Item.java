@@ -29,6 +29,7 @@ public class Item {
   }
   public String getBrand() {return brand;}
   public String getDescription() {return description;}
+  /// //
 
 
   public void setName(String name) {
