@@ -2,8 +2,8 @@ public class Fruit extends FoodItem {
   
   boolean citrus;
 
-  public Fruit(String name, double price, String expiration, boolean citrus) {
-    super(name, price, expiration);
+  public Fruit(String name, double price, String brand, String description, String expiration, boolean citrus) {
+    super(name, price, brand, description, expiration);
     this.citrus = citrus;
   }
 

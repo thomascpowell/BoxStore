@@ -2,8 +2,8 @@ public class Shoe extends Outerwear {
 
   boolean hightop;
 
-  public Shoe(String name, double price, boolean fragile, int size, boolean hightop) {
-    super(name, price, fragile, size);
+  public Shoe(String name, double price, String brand, String description, boolean fragile, int size, boolean hightop) {
+    super(name, price, brand, description, fragile, size);
     this.hightop = hightop;
   }
 

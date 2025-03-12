@@ -1,8 +1,8 @@
 public class Furniture extends HouseholdItem {
   private int legs;
 
-  public Furniture(String name, double price, boolean fragile, String material, int legs) {
-    super(name, price, fragile, material);
+  public Furniture(String name, double price, String brand, String description, boolean fragile, String material, int legs) {
+    super(name, price, brand, description, fragile, material);
     this.legs = legs;
   }
 

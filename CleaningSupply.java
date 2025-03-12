@@ -2,8 +2,8 @@ public class CleaningSupply extends HouseholdItem {
  
   private boolean sprayBottle;
 
-  public CleaningSupply(String name, double price, boolean fragile, String material, boolean sprayBottle) {
-    super(name, price, fragile, material);
+  public CleaningSupply(String name, double price, String brand, String description, boolean fragile, String material, boolean sprayBottle) {
+    super(name, price, brand, description, fragile, material);
     this.sprayBottle = sprayBottle;
   }
 

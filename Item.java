@@ -1,12 +1,13 @@
 public class Item {
   private String name;
   private double price;
-  private int quantity;
-  private int returnPolicy;
   private String brand;
   private String description;
+  private int quantity;
+  private int returnPolicy;
 
-  public Item(String name, double price, int quantity, int returnPolicy, String brand, String description) {
+
+  public Item(String name, double price, String brand, String description) {
     this.quantity = 1; // for use in WQS class
     this.returnPolicy = 30; // default 30 days, for use in sellItem
     this.name = name;
@@ -14,6 +15,7 @@ public class Item {
     this.brand = brand;
     this.description = description;
   }
+
 
   public String getName() {
     return name;
