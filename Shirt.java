@@ -2,8 +2,8 @@ public class Shirt extends Outerwear {
 
   private String color;
 
-  public Shirt(String name, double price, boolean fragile, int size, String color) {
-    super(name, price, fragile, size);
+  public Shirt(String name, double price, String brand, String description, boolean fragile, int size, String color) {
+    super(name, price, brand, description, fragile, size);
     this.color = color;
   }
 
