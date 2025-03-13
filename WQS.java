@@ -10,15 +10,15 @@ public class WQS {
   }
 
   private void generateInventory() {
-    this.inventory.add(new Fruit("apple", 2, "3/1/25", false));
-    this.inventory.add(new Fruit("lemon", 2, "3/1/25", true));
-    this.inventory.add(new Furniture("table", 200, true, "glass", 4));
-    this.inventory.add(new Laptop("macbook", 7, true, 2010, "pentium dual core"));
-    this.inventory.add(new Phone("nokia", 23, false, 2000, "brick"));
-    this.inventory.add(new Shirt("nike shirt", 40, false, 2, "gray"));
-    this.inventory.add(new Shoe("nike shoe", 400, false, 2, false));
-    this.inventory.add(new TV("samsung tv", 75, true, 2022, "720p"));
-    this.inventory.add(new Vegetable("carrot", 2, "3/2/25", false));
+    this.inventory.add(new Fruit("apple", 2, "", "desc", "3/1/25", false)); // brand can be blank/empty
+    this.inventory.add(new Fruit("lemon", 2, "", "desc", "3/1/25", true)); 
+    this.inventory.add(new Furniture("table", 400, "wayfair", "desc", false, "glass", 4));
+    this.inventory.add(new Laptop("macbook", 7, "apple", "desc", true, 2010, "pentium dual core"));
+    this.inventory.add(new Phone("3310", 23, "nokia", "desc", false, 2000, "brick"));
+    this.inventory.add(new Shirt("shirt", 30, "nike", "desc", false, 2, "gray"));
+    this.inventory.add(new Shoe("shoe", 400, "adidas", "desc", false, 2, false));
+    this.inventory.add(new TV("tv", 75, "samsung", "desc", true, 2022, "720p"));
+    this.inventory.add(new Vegetable("carrot", 2, "", "desc", "3/2/11", false));
   }
 
   private int menu(Scanner in) {
@@ -100,7 +100,7 @@ public class WQS {
       // case: add new item type
       if (choice == -1) {
         // ItemFactory abstracts most of this
-        System.out.print("Input item type: [Fruit, Laptop, Outerwear, Phone, Shirt, TV, Vegetable]: ");
+        System.out.print("Input item type: [Fruit, Laptop, Outerwear, Phone, Shirt, TV, Vegetable, Furniture]: ");
         try {
           Item res = ItemFactory.createItem(in.next());
           if (res == null) {throw new Exception();}
