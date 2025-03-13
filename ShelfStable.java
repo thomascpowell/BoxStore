@@ -14,9 +14,4 @@ public class ShelfStable extends FoodItem {
   public void setPackaging(String packaging) {
     this.packaging = packaging;
   }
-
-
-  //I like dudes
-
-
 }

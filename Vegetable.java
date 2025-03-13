@@ -3,7 +3,7 @@ public class Vegetable extends FoodItem {
   private boolean green;
 
   public Vegetable(String name, double price, String brand, String description, String expiration, boolean green) {
-    super(name, price, expiration, brand, description);
+    super(name, price, brand, description, expiration);
     this.green = green;
   }
 

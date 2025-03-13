@@ -33,12 +33,17 @@ public class ItemFactory {
     boolean hightop;
     String resolution;
     boolean green;
+    String brand;
+    String description;
 
     System.out.print("Name: ");
     name = in.next();
     System.out.print("Price: ");
     price = in.nextInt();
-
+    System.out.print("Brand: ");
+    brand = in.next();
+    System.out.print("Description: ");
+    description = in.next();
     switch (type) {
 
       case "Fruit":
@@ -46,7 +51,7 @@ public class ItemFactory {
         citrus = (in.next().equalsIgnoreCase("y") ? false : true);
         System.out.print("Expiration: ");
         expiration = in.next();
-        res = new Fruit(name, price, expiration, citrus);
+        res = new Fruit(name, price, brand, description, expiration, citrus);
         break;
       
       case "Furniture":
@@ -56,7 +61,7 @@ public class ItemFactory {
         material = in.next();
         System.out.print("Legs: ");
         legs = in.nextInt();
-        res = new Furniture(name, price, fragile, material, legs);
+        res = new Furniture(name, price, brand, description, fragile, material, legs);
         break;
 
       case "Laptop":
@@ -66,7 +71,7 @@ public class ItemFactory {
         processor = in.next();
         System.out.print("Release Year: ");
         releaseYear = in.nextInt();
-        res = new Laptop(name, price, fragile, releaseYear, processor);
+        res = new Laptop(name, price, brand, description, fragile, releaseYear, processor);
         break;
 
       case "Phone":
@@ -76,7 +81,7 @@ public class ItemFactory {
         formFactor = in.next();
         System.out.print("Release Year: ");
         releaseYear = in.nextInt();
-        res = new Phone(name, price, fragile, releaseYear, formFactor);
+        res = new Phone(name, price, brand, description, fragile, releaseYear, formFactor);
         break;
 
       case "Shirt":
@@ -86,7 +91,7 @@ public class ItemFactory {
         size = in.nextInt();
         System.out.print("Color: ");
         color = in.next();
-        res = new Shirt(name, price, fragile, size, color);
+        res = new Shirt(name, price, brand, description, fragile, size, color);
         break;
 
       case "Shoe":
@@ -96,7 +101,7 @@ public class ItemFactory {
         size = in.nextInt();
         System.out.print("Is the item a hightop? [Y/N]: ");
         hightop = (in.next().equalsIgnoreCase("y") ? false : true);
-        res = new Shoe(name, price, fragile, size, hightop);
+        res = new Shoe(name, price, brand, description, fragile, size, hightop);
         break;
 
       case "TV":
@@ -106,7 +111,7 @@ public class ItemFactory {
         resolution = in.next();
         System.out.print("Release Year: ");
         releaseYear = in.nextInt();
-        res = new TV(name, price, fragile, releaseYear, resolution);
+        res = new TV(name, price, brand, description, fragile, releaseYear, resolution);
         break;
 
       case "Vegetable":
@@ -114,7 +119,7 @@ public class ItemFactory {
         green = (in.next().equalsIgnoreCase("y") ? false : true);
         System.out.print("Expiration: ");
         expiration = in.next();
-        res = new Vegetable(name, price, expiration, green);
+        res = new Vegetable(name, price, brand, description, expiration, green);
         break;
 
       default:
