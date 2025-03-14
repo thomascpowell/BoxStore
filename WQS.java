@@ -117,22 +117,33 @@ public class WQS {
     }
   }
 
-  private String generateTable(ArrayList<Item> items) {
-    // TODO: For sellItem
+  private void printTable(ArrayList<Item> items) {
+    // Prints a table of items (name, price, brand, desc, return policy)
     // "Displays available options in a table format for the selected category, 
     // including details such as the item name, price, brand (if applicable),
     // description, and return policy."
-    return "";
+    // TODO: Format as table
+    for (Item item : items) {
+      System.out.printf("%s: %s%n%s: %.2f%n%s: %s%n%s: %s%n%s: %d%n%n", "Name", item.getName(), "Price", item.getPrice(),
+              "Brand", item.getBrand(), "Description", item.getDescription(), "Return Policy", item.getReturnPolicy());
+    }
   }
 
-  private String generateOrderSummary(ArrayList<Item> items) {
-    // TODO: For sellItem
+  private void printOrderSummary(ArrayList<Item> items) {
     // "Displays an order summary (group item types together in output)"
-    return "";
+    int count = 0;
+    double totalPrice = 0;
+    for (Item item : items){
+      count += 1;
+      totalPrice += item.getPrice();
+    }
+    System.out.println();
+    printTable(items);
+    System.out.printf("%s: %n%s: %d%n%s: %.2f\n", "Item Order Summary", "Total items", count, "Total Price", totalPrice);
   }
 
   private void sellItem(Scanner in) {
-    // TODO: Basically copy addItem, but use generateTable to display info
+    // TODO: Basically copy addItem, but use printTable to display info
   }
 
   public static void main(String[] args) {
@@ -152,6 +163,8 @@ public class WQS {
         case 3:
           store.printItems(store.inventory);
           break;
+        case 7:
+          store.printOrderSummary(store.inventory);
         case 0:
           System.out.println("Exiting.");
           break loop;

@@ -1,11 +1,13 @@
 Todo:
 
-1. Implement 3 unfinished functions (sellItem Related)
+1. Implement 3 unfinished functions
+    - sellItem
+    - (WIP) printTable
+    - (Complete) printOrderSummary
 
 2. Document functions
 
 3. Charts
-
 
 
 Complete:
