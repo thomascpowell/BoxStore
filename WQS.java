@@ -22,14 +22,8 @@ public class WQS {
   }
 
   private int menu(Scanner in) {
-    System.out.print("\n\nWQS Store Menu: \n1: Add Item \n2: Sell Item \n3: Display Inventory \n0: Exit Program \nInput: ");
-    try {
-      int res = in.nextInt();
-      return res;
-    } catch (Exception InputMismatchException) {
-      in.nextLine();
-      return 42;
-    }
+    System.out.print("\n\nWQS Store Menu: \n1: Add Item \n2: Sell Item \n3: Display Inventory \n0: Exit Program \n");
+    return Utils.getInt(in, "Input: ");
   }
 
   private void printItems(ArrayList<Item> items) {
@@ -60,60 +54,50 @@ public class WQS {
 
   private void addItem(Scanner in) {
     int choice;
-    // loop until user is done
     while (true) {
-      // get item type to display
-      System.out.print("\nInput FoodItem, ElectronicItem, Outerwear, HouseholdItem or 0 to exit: ");
-      String target = in.next();
-      if (target.equals("0")) {
-        System.out.println("Exiting. Updated Inventory:");
+      // menu, input validation
+      System.out.println("\nAdd Item Menu: \n1: Food \n2: Electronic \n3: Outerwear \n4: Household \n5: New Item \n0: Exit");
+      while (true) {
+        choice = Utils.getInt(in, "Input: ");
+        if (0 <= choice && choice <= 5) { break; } 
+        System.out.println("Expected value between 0 and 5.");
+      }
+      // exit
+      if (choice == 0) {
+        System.out.println("Exiting and displaying updated inventory.");
         this.printItems(inventory);
         break;
       }
-      // print items of specified ancestor class
-      ArrayList<Item> items = getItemsWithInstanceOf(target);
+      // add new
+      if (choice == 5) {
+        inventory.add(ItemFactory.createItem(Utils.getString(in, "New Item Type: ")));
+        continue;
+      }
+      // match numbers to types
+      String type = switch (choice) {
+        case 1 -> "FoodItem";
+        case 2 -> "ElectronicItem";
+        case 3 -> "Outerwear";
+        case 4 -> "HouseholdItem";
+        default -> "";
+      };
+      // print items of type
+      ArrayList<Item> items = getItemsWithInstanceOf(type);
       if (items.size() == 0) {
         System.out.println("No items right now.");
         continue;
       } else {
         this.printItems(items);
       }
-      // get item to add
-      System.out.print("Input an item number to add to, -1 to add a new type of item, or 0 to exit: ");
-      try {
-        choice = in.nextInt();
-      } catch (Exception InputMismatchException) {
-        System.out.println("Invalid input.");
-        continue;
-      }
-      // case: add to current item
+      // add to an item
+      choice = Utils.getInt(in, "Input an item number to add to, or 0 to exit: ");
       if (0 < choice && choice < items.size()+1) {
         Item selection = items.get(choice-1);
-        System.out.printf("How many %ss should be added? ", selection.getName());
-        selection.setQuantity(selection.getQuantity() + in.nextInt());
-        continue;
+        selection.setQuantity(
+          selection.getQuantity() + 
+          Utils.getInt(in, String.format("How many %ss should be added? ", selection.getName()))
+        );
       }
-      // case: exit current item type
-      if (choice == 0) {
-        continue;
-      }
-      // case: add new item type
-      if (choice == -1) {
-        // ItemFactory abstracts most of this
-        System.out.print("Input item type: [Fruit, Laptop, Outerwear, Phone, Shirt, TV, Vegetable, Furniture]: ");
-        try {
-          Item res = ItemFactory.createItem(in.next());
-          if (res == null) {throw new Exception();}
-          inventory.add(res);
-          continue;
-        } catch (Exception e) {
-          System.out.println("Error creating new item.");
-          in.nextLine();
-          continue;
-        }
-      }
-      System.out.println("Invalid input.");
-      in.nextLine();
     }
   }
 
@@ -143,36 +127,28 @@ public class WQS {
   }
 
   private void sellItem(Scanner in) {
-    // TODO: Basically copy addItem, but use printTable to display info
+    // TODO: implement this
   }
 
   public static void main(String[] args) {
     WQS store = new WQS();
     store.generateInventory();
     Scanner in = new Scanner(System.in);
-    int choice = 42;
+    int choice;
     loop: while (true) {
       choice = store.menu(in);
       switch (choice) {
-        case 1:
-          store.addItem(in);
-          break;
-        case 2:
-          store.sellItem(in);
-          break;
-        case 3:
-          store.printItems(store.inventory);
-          break;
-        case 7:
-          store.printOrderSummary(store.inventory); // test choice for printOrderSummary
-        case 0:
+        case 1 -> store.addItem(in);
+        case 2 -> store.sellItem(in);
+        case 3 -> store.printItems(store.inventory);
+        case 7 -> store.printOrderSummary(store.inventory); // test choice for tables 
+        case 0 ->  {
           System.out.println("Exiting.");
+          in.close();
           break loop;
-        default:
-          System.out.println("Invalid input."); 
-          break;
+        }
+        default -> System.out.println("Invalid input.");
       }
     }
-    in.close();
   }
 }
