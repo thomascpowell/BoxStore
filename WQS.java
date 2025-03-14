@@ -164,7 +164,7 @@ public class WQS {
           store.printItems(store.inventory);
           break;
         case 7:
-          store.printOrderSummary(store.inventory);
+          store.printOrderSummary(store.inventory); // test choice for printOrderSummary
         case 0:
           System.out.println("Exiting.");
           break loop;
