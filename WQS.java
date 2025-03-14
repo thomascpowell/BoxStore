@@ -117,13 +117,23 @@ public class WQS {
     }
   }
 
-  private String generateTable(ArrayList<Item> items) {
+
+
+
+  private void generateTable(ArrayList<Item> items) {
     // TODO: For sellItem
     // "Displays available options in a table format for the selected category, 
     // including details such as the item name, price, brand (if applicable),
     // description, and return policy."
-    return "";
+    for (Item item: items){
+      System.out.printf("%s: %s%n%s: %f%n%s: %s%n%s: %s%n%s: %d", "Name", item.getName(), "Price", item.getPrice(),
+              "Brand", item.getBrand(), "Description", item.getDescription(), "Return Policy", item.getReturnPolicy());
+    }
   }
+
+
+
+
 
   private String generateOrderSummary(ArrayList<Item> items) {
     // TODO: For sellItem
@@ -131,9 +141,23 @@ public class WQS {
     return "";
   }
 
-  private void sellItem(Scanner in) {
+
+
+
+
+
+
+
+  private void sellItem(Scanner in) {//Scanner in
     // TODO: Basically copy addItem, but use generateTable to display info
+
   }
+
+
+
+
+
+
 
   public static void main(String[] args) {
     WQS store = new WQS();
