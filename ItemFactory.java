@@ -1,10 +1,8 @@
 import java.util.Scanner;
 
-
 public class ItemFactory {
 
   public static Item createItem(String type) {
-    Scanner in = new Scanner(System.in);
     try {
       return createItemHelper(type);
     } catch (Throwable e) {
@@ -14,10 +12,15 @@ public class ItemFactory {
     }
   }
 
+  public static void main(String[] args) {
+    System.out.println("TEST DRIVER");
+    Item test = createItem("Fruit");
+    System.out.println(test);
+  }
+
   private static Item createItemHelper(String type) throws Exception {
     Scanner in = new Scanner(System.in);
     Item res;
-
     String name;
     double price;
     String expiration;
@@ -35,97 +38,61 @@ public class ItemFactory {
     boolean green;
     String brand;
     String description;
+    name = Utils.getString(in, "Name: ");
+    price = Utils.getInt(in, "Price: ");
+    brand = Utils.getString(in, "Brand: ");
+    description = Utils.getString(in, "Description: ");
 
-    System.out.print("Name: ");
-    name = in.next();
-    System.out.print("Price: ");
-    price = in.nextInt();
-    System.out.print("Brand: ");
-    brand = in.next();
-    System.out.print("Description: ");
-    description = in.next();
     switch (type) {
-
       case "Fruit":
-        System.out.print("Is the item citrus [Y/N]: ");
-        citrus = (in.next().equalsIgnoreCase("y") ? false : true);
-        System.out.print("Expiration: ");
-        expiration = in.next();
+        citrus =  Utils.getBool(in, "Is the item citrus?");
+        expiration = Utils.getString(in, "Expiration: ");
         res = new Fruit(name, price, brand, description, expiration, citrus);
         break;
-      
       case "Furniture":
-        System.out.print("Is the item fragile? [Y/N]: ");
-        fragile = (in.next().equalsIgnoreCase("y") ? false : true);
-        System.out.print("Material: ");
-        material = in.next();
-        System.out.print("Legs: ");
-        legs = in.nextInt();
+        fragile = Utils.getBool(in, "Is the item fragile?");
+        material = Utils.getString(in, "Material: ");
+        legs = Utils.getInt(in, "Legs: ");
         res = new Furniture(name, price, brand, description, fragile, material, legs);
         break;
-
       case "Laptop":
-        System.out.print("Is the item fragile? [Y/N]: ");
-        fragile = (in.next().equalsIgnoreCase("y") ? false : true);
-        System.out.print("Processor: ");
-        processor = in.next();
-        System.out.print("Release Year: ");
-        releaseYear = in.nextInt();
+        fragile = Utils.getBool(in, "Is the item fragile?");
+        processor = Utils.getString(in, "Processor: ");
+        releaseYear = Utils.getInt(in, "Release Year: ");
         res = new Laptop(name, price, brand, description, fragile, releaseYear, processor);
         break;
-
       case "Phone":
-        System.out.print("Is the item fragile? [Y/N]: ");
-        fragile = (in.next().equalsIgnoreCase("y") ? false : true);
-        System.out.print("Form Factor: ");
-        formFactor = in.next();
-        System.out.print("Release Year: ");
-        releaseYear = in.nextInt();
+        fragile = Utils.getBool(in, "Is the item fragile?");
+        formFactor = Utils.getString(in, "Form Factor: ");
+        releaseYear = Utils.getInt(in, "Release Year: ");
         res = new Phone(name, price, brand, description, fragile, releaseYear, formFactor);
         break;
-
       case "Shirt":
-        System.out.print("Is the item fragile? [Y/N]: ");
-        fragile = (in.next().equalsIgnoreCase("y") ? false : true);
-        System.out.print("Size: ");
-        size = in.nextInt();
-        System.out.print("Color: ");
-        color = in.next();
+        fragile = Utils.getBool(in, "Is the item fragile?");
+        size = Utils.getInt(in, "Size: ");
+        color = Utils.getString(in, "Color: ");
         res = new Shirt(name, price, brand, description, fragile, size, color);
         break;
-
       case "Shoe":
-        System.out.print("Is the item fragile? [Y/N]: ");
-        fragile = (in.next().equalsIgnoreCase("y") ? false : true);
-        System.out.print("Size: ");
-        size = in.nextInt();
-        System.out.print("Is the item a hightop? [Y/N]: ");
-        hightop = (in.next().equalsIgnoreCase("y") ? false : true);
+        fragile = Utils.getBool(in, "Is the item fragile?");
+        size = Utils.getInt(in, "Size: ");
+        hightop = Utils.getBool(in, "Is the shoe a hightop?");
         res = new Shoe(name, price, brand, description, fragile, size, hightop);
         break;
-
       case "TV":
-        System.out.print("Is the item fragile? [Y/N]: ");
-        fragile = (in.next().equalsIgnoreCase("y") ? false : true);
-        System.out.print("Resolution: ");
-        resolution = in.next();
-        System.out.print("Release Year: ");
-        releaseYear = in.nextInt();
+        fragile = Utils.getBool(in, "Is the item fragile?");
+        resolution = Utils.getString(in, "Resolution: ");
+        releaseYear = Utils.getInt(in, "Release Year: ");
         res = new TV(name, price, brand, description, fragile, releaseYear, resolution);
         break;
-
       case "Vegetable":
-        System.out.print("Is the item green? [Y/N]: ");
-        green = (in.next().equalsIgnoreCase("y") ? false : true);
-        System.out.print("Expiration: ");
-        expiration = in.next();
+        green = Utils.getBool(in, "Is the vegetable green?");
+        expiration = Utils.getString(in, "Expiration: ");
         res = new Vegetable(name, price, brand, description, expiration, green);
         break;
-
       default:
         throw new Exception("Unknown Item Type");
     }
     return res;
-
   }
 }
