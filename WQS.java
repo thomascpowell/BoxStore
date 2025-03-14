@@ -126,19 +126,28 @@ public class WQS {
     // including details such as the item name, price, brand (if applicable),
     // description, and return policy."
     for (Item item: items){
-      System.out.printf("%s: %s%n%s: %f%n%s: %s%n%s: %s%n%s: %d", "Name", item.getName(), "Price", item.getPrice(),
+      System.out.printf("%s: %s%n%s: %f%n%s: %s%n%s: %s%n%s: %d%n%n", "Name", item.getName(), "Price", item.getPrice(),
               "Brand", item.getBrand(), "Description", item.getDescription(), "Return Policy", item.getReturnPolicy());
     }
+    //return "";
   }
 
 
 
 
 
-  private String generateOrderSummary(ArrayList<Item> items) {
+  private void generateOrderSummary(ArrayList<Item> items) {
     // TODO: For sellItem
     // "Displays an order summary (group item types together in output)"
-    return "";
+    int count = 0;
+    double totalPrice = 0;
+    for (Item item: items){
+      count += 1;
+      totalPrice += item.getPrice();
+    }
+    generateTable(items);
+    System.out.printf("%n%s: %n%s: %d%n%s: %f", "Item Order Summary", "Total items", count, "Total Price", totalPrice);
+    //return "";
   }
 
 
