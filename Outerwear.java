@@ -10,6 +10,7 @@ public class Outerwear extends StoreItem {
   public int getSize() {
     return size;
   }
+
   public void setSize(int size) {
     this.size = size;
   }

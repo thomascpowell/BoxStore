@@ -35,7 +35,7 @@ public class WQS {
     }
   }
 
-  private ArrayList<Item> getItemsWithInstanceOf(String target) {
+  private ArrayList<Item> getItemsByClass(String target) {
     ArrayList<Item> res = new ArrayList<Item>();
     Class<?> targetclass;
     try {
@@ -85,7 +85,7 @@ public class WQS {
         default -> "";
       };
       // print items of type
-      ArrayList<Item> items = getItemsWithInstanceOf(type);
+      ArrayList<Item> items = getItemsByClass(type);
       if (items.size() == 0) {
         System.out.println("No items right now.");
         continue;
@@ -140,7 +140,7 @@ public class WQS {
     } else {
       inventory.get(index).setQuantity(selection.getQuantity()-1);
     } 
-    // copy over to ancestor
+    // copy to ancestor
     Item copy = new Item(
       selection.getName(),
       selection.getPrice(),
@@ -149,7 +149,6 @@ public class WQS {
     );
     // check if item type is already in cart
     for (Item item : cart) {
-      // equals is overriden for item, based on class and name
       if (copy.equals(item)) {
         item.setQuantity(item.getQuantity()+1);
         return;
@@ -185,7 +184,7 @@ public class WQS {
         default -> "";
       };
       // print items of type
-      ArrayList<Item> items = getItemsWithInstanceOf(type);
+      ArrayList<Item> items = getItemsByClass(type);
       if (items.size() == 0) {
         System.out.println("No items right now.");
         continue;

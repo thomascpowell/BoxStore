@@ -1,11 +1,12 @@
 Todo:
 
-1. sellItem()
-    - (done) Make it work
-    - add tax for each parent class
+1. Add tax for each parent class, like for return policy
 
-2. Table format for printTable()
+2. Add add tax to printOrderSummary()
+   - Calculate subtotal, tax, and total
 
-3. Documentation
+3. Table format for printTable()
+
+4. Document
 
 

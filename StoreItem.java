@@ -1,6 +1,6 @@
 public class StoreItem extends Item {
-  private boolean fragile;
 
+  private boolean fragile;
 
   public StoreItem(String name, double price, String brand, String description, boolean fragile) {
     super(name, price, brand, description);
@@ -14,5 +14,4 @@ public class StoreItem extends Item {
   public void setFragile(boolean fragile) {
     this.fragile = fragile;
   } 
-
 }
