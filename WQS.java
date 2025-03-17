@@ -86,6 +86,7 @@ public class WQS {
       };
       // print items of type
       ArrayList<Item> items = getItemsByClass(type);
+
       if (items.size() == 0) {
         System.out.println("No items right now.");
         continue;
@@ -110,18 +111,20 @@ public class WQS {
     // including details such as the item name, price, brand (if applicable),
     // description, and return policy."
     // TODO: Format as table
-    int index = 1;
+    System.out.printf("%-15s%-15s%-15s%-20s%-15%", "Name", "Price", "Brand", "Description", "Return Policy");
+    String str = "-";
+    System.out.println(str.repeat(100));
     for (Item item : items) {
-      // just realized that rows need to be numbered and quantity listed
-      System.out.printf("Item #%d:\nQuantity: %d\n", index++, item.getQuantity()); // thats what this does
-      System.out.printf("%s: %s%n%s: %.2f%n%s: %s%n%s: %s%n%s: %d%n%n", "Name", item.getName(), "Price", item.getPrice(),
-              "Brand", item.getBrand(), "Description", item.getDescription(), "Return Policy", item.getReturnPolicy());
+//      System.out.printf("%s: %s%n%s: %.2f%n%s: %s%n%s: %s%n%s: %d%n%n", "Name", item.getName(), "Price", item.getPrice(),
+//              "Brand", item.getBrand(), "Description", item.getDescription(), "Return Policy", item.getReturnPolicy());
+//
+      System.out.printf("%-15s%-15.2f%-15s%-25s%-15d%", item.getName(), item.getPrice(), item.getBrand(),
+              item.getDescription(), item.getReturnPolicy());
     }
   }
 
   private void printOrderSummary(ArrayList<Item> items) {
     // "Displays an order summary (group item types together in output)"
-    int count = 0;
     double subtotal = 0;
     double taxes = 0;
     for (Item item : items) {

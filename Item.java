@@ -18,6 +18,7 @@ public class Item {
     this.description = description;
   }
 
+
   public String getName() {
     return name;
   }
@@ -52,6 +53,7 @@ public class Item {
   public void setReturnPolicy(int returnPolicy) {
     this.returnPolicy = returnPolicy;
   }
+
   public void setTax(double tax) {
     this.tax = tax;
   }

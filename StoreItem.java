@@ -7,9 +7,7 @@ public class StoreItem extends Item {
     this.fragile = fragile;
   }
 
-  public boolean isFragile() {
-    return fragile;
-  }
+  public boolean isFragile() {return fragile;}
 
   public void setFragile(boolean fragile) {
     this.fragile = fragile;
