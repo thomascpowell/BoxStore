@@ -125,14 +125,14 @@ public class WQS {
     double subtotal = 0;
     double taxes = 0;
     for (Item item : items) {
-      count += 1;
-      subtotal += item.getPrice();
+      count += 1 * item.getQuantity();
+      subtotal += item.getPrice() * item.getQuantity();
       taxes += item.getPrice() * item.getTax();
     }
     double totalPrice = taxes + subtotal;
     System.out.println("\nCart:");
     printTable(items);
-    System.out.printf("\nOrder Summary: \nTotal Items: %d \nSubtotal: $%.2f \nTaxes: $%.2f \nTotal Price: $%.2f\n", count, subtotal, taxes, totalPrice);
+    System.out.printf("Order Summary: \nTotal Items: %d \nSubtotal: $%.2f \nTaxes: $%.2f \nTotal Price: $%.2f\n", count, subtotal, taxes, totalPrice);
   }
 
   private void addToCart(ArrayList<Item> cart, Item selection) {
