@@ -127,7 +127,7 @@ public class WQS {
     for (Item item : items) {
       count += 1 * item.getQuantity();
       subtotal += item.getPrice() * item.getQuantity();
-      taxes += item.getPrice() * item.getTax();
+      taxes += item.getPrice() * item.getTax() * item.getQuantity();
     }
     double totalPrice = taxes + subtotal;
     System.out.println("\nCart:");
