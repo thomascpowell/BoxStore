@@ -10,6 +10,7 @@ public class CleaningSupply extends HouseholdItem {
   public boolean isSprayBottle() {
     return sprayBottle;
   }
+
   public void setSprayBottle(boolean sprayBottle) {
     this.sprayBottle = sprayBottle;
   }

@@ -10,9 +10,11 @@ public class Shoe extends Outerwear {
   public boolean isHightop() {
     return hightop;
   }
+
   public void setHightop(boolean hightop) {
     this.hightop = hightop;
   }
+
   public String toString() {
     return String.format("Quantity: %d; Name: %s; Price: %.2f; Fragile: %b; Size: %d; Hightop: %b",
     this.getQuantity(), this.getName(), this.getPrice(), this.isFragile(), this.getSize(), this.isHightop());

@@ -1,11 +1,11 @@
 public class Item {
+
   private String name;
   private double price;
   private String brand;
   private String description;
   private int quantity;
   private int returnPolicy;
-
 
   public Item(String name, double price, String brand, String description) {
     this.quantity = 1;
@@ -15,7 +15,6 @@ public class Item {
     this.brand = brand;
     this.description = description;
   }
-
 
   public String getName() {
     return name;
@@ -36,7 +35,6 @@ public class Item {
     return description;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
@@ -55,7 +53,7 @@ public class Item {
   public void setDescription(String description) {
     this.description = description;
   }
-
+  
   @Override
   public boolean equals(Object obj) {
     if (this.getClass() != obj.getClass()) {

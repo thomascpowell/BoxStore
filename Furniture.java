@@ -9,6 +9,7 @@ public class Furniture extends HouseholdItem {
   public int getLegs() {
     return legs;
   }
+
   public void setLegs(int legs) {
     this.legs = legs;
   }
