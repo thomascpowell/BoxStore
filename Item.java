@@ -6,10 +6,12 @@ public class Item {
   private String description;
   private int quantity;
   private int returnPolicy;
+  private double tax;
 
   public Item(String name, double price, String brand, String description) {
     this.quantity = 1;
     this.returnPolicy = 30;
+    this.tax = 0.04;
     this.name = name;
     this.price = price;
     this.brand = brand;
@@ -27,6 +29,9 @@ public class Item {
   }
   public int getReturnPolicy() {
     return returnPolicy;
+  }
+  public double getTax() {
+    return tax;
   }
   public String getBrand() {
     return brand;
@@ -46,6 +51,9 @@ public class Item {
   }
   public void setReturnPolicy(int returnPolicy) {
     this.returnPolicy = returnPolicy;
+  }
+  public void setTax(double tax) {
+    this.tax = tax;
   }
   public void setBrand(String brand) {
     this.brand = brand;

@@ -7,6 +7,7 @@ public class FoodItem extends Item {
     super.setReturnPolicy(7);
     this.expiration = expiration;
     super.setReturnPolicy(2);
+    super.setTax(0.02); // "tax should be different for food items vs non-food items"
   }
 
   public String getExpiration() {

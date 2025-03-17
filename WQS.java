@@ -122,14 +122,17 @@ public class WQS {
   private void printOrderSummary(ArrayList<Item> items) {
     // "Displays an order summary (group item types together in output)"
     int count = 0;
-    double totalPrice = 0;
+    double subtotal = 0;
+    double taxes = 0;
     for (Item item : items) {
       count += 1;
-      totalPrice += item.getPrice();
+      subtotal += item.getPrice();
+      taxes += item.getPrice() * item.getTax();
     }
+    double totalPrice = taxes + subtotal;
     System.out.println("\nCart:");
     printTable(items);
-    System.out.printf("%s: %n%s: %d%n%s: %.2f\n", "Order Summary", "Total items", count, "Total Price", totalPrice);
+    System.out.printf("\nOrder Summary: \nTotal Items: %d \nSubtotal: $%.2f \nTaxes: $%.2f \nTotal Price: $%.2f\n", count, subtotal, taxes, totalPrice);
   }
 
   private void addToCart(ArrayList<Item> cart, Item selection) {
