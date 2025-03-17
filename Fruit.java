@@ -10,6 +10,7 @@ public class Fruit extends FoodItem {
   public boolean isCitrus() {
     return citrus;
   }
+
   public void setCitrus(boolean citrus) {
     this.citrus = citrus;
   }

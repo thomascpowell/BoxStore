@@ -1,9 +1,8 @@
 Todo:
 
-1. sellItem()
+1. printTable() improvements
 
-2. Table format for printTable()
+2. JavaDoc
 
-3. Documentation
-
+3. UML
 

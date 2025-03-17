@@ -38,6 +38,7 @@ public class ItemFactory {
     boolean green;
     String brand;
     String description;
+
     name = Utils.getString(in, "Name: ");
     price = Utils.getInt(in, "Price: ");
     brand = Utils.getString(in, "Brand: ");

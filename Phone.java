@@ -9,6 +9,7 @@ public class Phone extends ElectronicItem {
   public String getFormFactor() {
     return formFactor;
   }
+
   public void setFormFactor(String formFactor) {
     this.formFactor = formFactor;
   }

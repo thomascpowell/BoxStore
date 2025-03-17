@@ -10,6 +10,7 @@ public class Vegetable extends FoodItem {
   public boolean isGreen() {
     return green;
   }
+
   public void setGreen(boolean green) {
     this.green = green;
   }

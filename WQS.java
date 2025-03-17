@@ -35,7 +35,7 @@ public class WQS {
     }
   }
 
-  private ArrayList<Item> getItemsWithInstanceOf(String target) {
+  private ArrayList<Item> getItemsByClass(String target) {
     ArrayList<Item> res = new ArrayList<Item>();
     Class<?> targetclass;
     try {
@@ -70,7 +70,10 @@ public class WQS {
       }
       // add new
       if (choice == 5) {
-        inventory.add(ItemFactory.createItem(Utils.getString(in, "New Item Type: ")));
+        Item res = ItemFactory.createItem(Utils.getString(in, "New Item Type: "));
+        if (res != null) {
+          inventory.add(res);
+        }
         continue;
       }
       // match numbers to types
@@ -82,7 +85,8 @@ public class WQS {
         default -> "";
       };
       // print items of type
-      ArrayList<Item> items = getItemsWithInstanceOf(type);
+      ArrayList<Item> items = getItemsByClass(type);
+
       if (items.size() == 0) {
         System.out.println("No items right now.");
         continue;
@@ -121,21 +125,86 @@ public class WQS {
 
   private void printOrderSummary(ArrayList<Item> items) {
     // "Displays an order summary (group item types together in output)"
-    int count = 0;
-    double totalPrice = 0;
-    for (Item item : items){
-      count += 1;
-      totalPrice += item.getPrice();
+    double subtotal = 0;
+    double taxes = 0;
+    for (Item item : items) {
+      count += 1 * item.getQuantity();
+      subtotal += item.getPrice() * item.getQuantity();
+      taxes += item.getPrice() * item.getTax() * item.getQuantity();
     }
-    System.out.println();
+    double totalPrice = taxes + subtotal;
+    System.out.println("\nCart:");
     printTable(items);
-    System.out.println();
-    System.out.printf("%s: %n%s: %d%n%s: %.2f\n", "Item Order Summary", "Total items", count, "Total Price", totalPrice);
+    System.out.printf("Order Summary: \nTotal Items: %d \nSubtotal: $%.2f \nTaxes: $%.2f \nTotal Price: $%.2f\n", count, subtotal, taxes, totalPrice);
+  }
+
+  private void addToCart(ArrayList<Item> cart, Item selection) {
+    // remove one item from inventory
+    int index = inventory.indexOf(selection);
+    if (selection.getQuantity() == 1) {
+      inventory.remove(index);
+    } else {
+      inventory.get(index).setQuantity(selection.getQuantity()-1);
+    } 
+    // copy to ancestor
+    Item copy = new Item(
+      selection.getName(),
+      selection.getPrice(),
+      selection.getBrand(),
+      selection.getDescription()
+    );
+    // check if item type is already in cart
+    for (Item item : cart) {
+      if (copy.equals(item)) {
+        item.setQuantity(item.getQuantity()+1);
+        return;
+      }
+    }
+    cart.add(copy);
   }
 
   private void sellItem(Scanner in) {
-    // TODO: implement this
-
+    ArrayList<Item> cart = new ArrayList<Item>();
+    int choice;
+    while (true) {
+      // menu, input validation
+      System.out.println("\nSell Item Menu: \n1: Food \n2: Electronic \n3: Outerwear \n4: Household \n0: Checkout");
+      while (true) {
+        choice = Utils.getInt(in, "Input: ");
+        if (0 <= choice && choice <= 5) { 
+          break; 
+        } 
+        System.out.println("Expected value between 0 and 5.");
+      }
+      // checkout
+      if (choice == 0) {
+        this.printOrderSummary(cart);
+        break;
+      }
+      // match numbers to types
+      String type = switch (choice) {
+        case 1 -> "FoodItem";
+        case 2 -> "ElectronicItem";
+        case 3 -> "Outerwear";
+        case 4 -> "HouseholdItem";
+        default -> "";
+      };
+      // print items of type
+      ArrayList<Item> items = getItemsByClass(type);
+      if (items.size() == 0) {
+        System.out.println("No items right now.");
+        continue;
+      } else {
+        System.out.println("\nAvailable Items: ");
+        this.printTable(items);
+      }
+      // add item to cart
+      choice = Utils.getInt(in, "Input an item number to add to cart, or 0 to exit: ");
+      if (0 < choice && choice < items.size()+1) {
+        Item selection = items.get(choice-1);
+        addToCart(cart, selection);
+      }
+    }
   }
 
   public static void main(String[] args) {

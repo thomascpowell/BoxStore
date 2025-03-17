@@ -9,6 +9,7 @@ public class Laptop extends ElectronicItem {
   public String getProcessor() {
     return processor;
   }
+
   public void setProcessor(String processor) {
     this.processor = processor;
   }

@@ -1,4 +1,5 @@
 public class TV extends ElectronicItem {
+
   private String resolution;
 
   public TV(String name, double price, String brand, String description, boolean fragile, int releaseYear, String resolution) {
@@ -9,6 +10,7 @@ public class TV extends ElectronicItem {
   public String getResolution() {
     return resolution;
   }
+
   public void setResolution(String resolution) {
     this.resolution = resolution;
   }
