@@ -64,4 +64,3 @@ public class Item {
     return this.getName().equals(((Item)obj).getName());
   }
 }
-
