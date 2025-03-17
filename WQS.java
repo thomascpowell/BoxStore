@@ -107,9 +107,15 @@ public class WQS {
     // including details such as the item name, price, brand (if applicable),
     // description, and return policy."
     // TODO: Format as table
+    System.out.printf("%-15s%-15s%-15s%-20s%-15%", "Name", "Price", "Brand", "Description", "Return Policy");
+    String str = "-";
+    System.out.println(str.repeat(100));
     for (Item item : items) {
-      System.out.printf("%s: %s%n%s: %.2f%n%s: %s%n%s: %s%n%s: %d%n%n", "Name", item.getName(), "Price", item.getPrice(),
-              "Brand", item.getBrand(), "Description", item.getDescription(), "Return Policy", item.getReturnPolicy());
+//      System.out.printf("%s: %s%n%s: %.2f%n%s: %s%n%s: %s%n%s: %d%n%n", "Name", item.getName(), "Price", item.getPrice(),
+//              "Brand", item.getBrand(), "Description", item.getDescription(), "Return Policy", item.getReturnPolicy());
+//
+      System.out.printf("%-15s%-15.2f%-15s%-25s%-15d%", item.getName(), item.getPrice(), item.getBrand(),
+              item.getDescription(), item.getReturnPolicy());
     }
   }
 
@@ -123,11 +129,13 @@ public class WQS {
     }
     System.out.println();
     printTable(items);
+    System.out.println();
     System.out.printf("%s: %n%s: %d%n%s: %.2f\n", "Item Order Summary", "Total items", count, "Total Price", totalPrice);
   }
 
   private void sellItem(Scanner in) {
     // TODO: implement this
+
   }
 
   public static void main(String[] args) {
