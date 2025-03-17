@@ -111,20 +111,18 @@ public class WQS {
     // including details such as the item name, price, brand (if applicable),
     // description, and return policy."
     // TODO: Format as table
-    System.out.printf("%-15s%-15s%-15s%-20s%-15%", "Name", "Price", "Brand", "Description", "Return Policy");
+    System.out.printf("%-15s%-15s%-15s%-20s%-15s\n", "Name", "Price", "Brand", "Description", "Return Policy");
     String str = "-";
     System.out.println(str.repeat(100));
     for (Item item : items) {
-//      System.out.printf("%s: %s%n%s: %.2f%n%s: %s%n%s: %s%n%s: %d%n%n", "Name", item.getName(), "Price", item.getPrice(),
-//              "Brand", item.getBrand(), "Description", item.getDescription(), "Return Policy", item.getReturnPolicy());
-//
-      System.out.printf("%-15s%-15.2f%-15s%-25s%-15d%", item.getName(), item.getPrice(), item.getBrand(),
-              item.getDescription(), item.getReturnPolicy());
+      System.out.printf("%-15s%-15.2f%-15s%-25s%-15d\n", item.getName(), item.getPrice(), item.getBrand(), item.getDescription(), item.getReturnPolicy());
     }
+    System.out.println();
   }
 
   private void printOrderSummary(ArrayList<Item> items) {
     // "Displays an order summary (group item types together in output)"
+    int count = 0;
     double subtotal = 0;
     double taxes = 0;
     for (Item item : items) {
