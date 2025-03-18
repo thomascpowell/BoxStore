@@ -1,8 +1,6 @@
 Todo:
 
-1. printTable() improvements
+1. JavaDoc
 
-2. JavaDoc
-
-3. UML
+2. UML
 
