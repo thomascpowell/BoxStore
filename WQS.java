@@ -106,16 +106,12 @@ public class WQS {
   }
 
   private void printTable(ArrayList<Item> items) {
-    // Prints a table of items (name, price, brand, desc, return policy)
-    // "Displays available options in a table format for the selected category, 
-    // including details such as the item name, price, brand (if applicable),
-    // description, and return policy."
-    // TODO: Format as table
-    System.out.printf("%-15s%-15s%-15s%-20s%-15s\n", "Name", "Price", "Brand", "Description", "Return Policy");
+    System.out.printf("%-10s%-15s%-15s%-15s%-20s%-15s%-15s\n","Item", "Name", "Price", "Brand", "Description", "Return Policy", "Quantity");
     String str = "-";
-    System.out.println(str.repeat(100));
+    System.out.println(str.repeat(99));
+    int count = 1;
     for (Item item : items) {
-      System.out.printf("%-15s%-15.2f%-15s%-25s%-15d\n", item.getName(), item.getPrice(), item.getBrand(), item.getDescription(), item.getReturnPolicy());
+      System.out.printf("%-10d%-15s%-15.2f%-15s%-25s%-15d%-15s\n",count++, item.getName(), item.getPrice(), item.getBrand(), item.getDescription(), item.getReturnPolicy(), item.getQuantity());
     }
     System.out.println();
   }
@@ -151,6 +147,7 @@ public class WQS {
       selection.getBrand(),
       selection.getDescription()
     );
+    copy.setTax(selection.getTax());
     // check if item type is already in cart
     for (Item item : cart) {
       if (copy.equals(item)) {
