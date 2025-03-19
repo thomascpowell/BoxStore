@@ -21,5 +21,5 @@ Todo:
     - TV.java
     - (Complete) Utils.java
     - Vegetable.java
-    - Complete: WQS.java
+    - (Complete) WQS.java
 
