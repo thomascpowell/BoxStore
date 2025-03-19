@@ -19,7 +19,7 @@ Todo:
     - Shoe.java
     - StoreItem.java
     - TV.java
-    - Utils.java
+    - (Complete) Utils.java
     - Vegetable.java
     - Complete: WQS.java
 
