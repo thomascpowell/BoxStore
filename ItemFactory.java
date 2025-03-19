@@ -1,7 +1,20 @@
+/**
+ * @author Thomas Powell, Dimitiri Montgomery, Taylor Waldo
+ * Date: March 27, 2025
+ * Section: CSC 331-002
+ * Purpose: Utility class for generating an Item based on user input.
+ * */
+
 import java.util.Scanner;
 
 public class ItemFactory {
 
+  /**
+   * Calls a helper class and validates the result.
+   *
+   * @param type The type of item to be created.
+   * @return The resulting Item or null if an error occurs.
+   * */
   public static Item createItem(String type) {
     try {
       return createItemHelper(type);
@@ -12,12 +25,12 @@ public class ItemFactory {
     }
   }
 
-  public static void main(String[] args) {
-    System.out.println("TEST DRIVER");
-    Item test = createItem("Fruit");
-    System.out.println(test);
-  }
-
+  /**
+   * Based on the provided type, takes appropriate input.
+   *
+   * @param type The type of item to be created.
+   * @return Resulting item.
+   * */
   private static Item createItemHelper(String type) throws Exception {
     Scanner in = new Scanner(System.in);
     Item res;
