@@ -1,3 +1,11 @@
+/**
+ * @author Thomas Powell, Dimitiri Montgomery, Taylor Waldo
+ * Date: March 27, 2025
+ * Section: CSC 331-002
+ * Purpose: Manage inventory for Wilmington Quick Shop using polymorphism.
+ * */
+
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,8 +17,11 @@ public class WQS {
     inventory = new ArrayList<Item>();
   }
 
+  /**
+   * Generates sample inventory items.
+   * */
   private void generateInventory() {
-    this.inventory.add(new Fruit("apple", 2, "", "desc", "3/1/25", false)); // brand can be blank/empty
+    this.inventory.add(new Fruit("apple", 2, "", "desc", "3/1/25", false));
     this.inventory.add(new Fruit("lemon", 2, "", "desc", "3/1/25", true)); 
     this.inventory.add(new Furniture("table", 400, "wayfair", "desc", false, "glass", 4));
     this.inventory.add(new Laptop("macbook", 7, "apple", "desc", true, 2010, "pentium dual core"));
@@ -21,6 +32,12 @@ public class WQS {
     this.inventory.add(new Vegetable("carrot", 2, "", "desc", "3/2/11", false));
   }
 
+  /**
+   * Prints the main menu and returns user input.
+   *
+   * @param in A scanner object
+   * @return The user's selection
+   * */
   private int menu(Scanner in) {
     System.out.print("\n\nWQS Store Menu: \n1: Add Item \n2: Sell Item \n3: Display Inventory \n0: Exit Program \n");
     return Utils.getInt(in, "Input: ");
@@ -35,6 +52,13 @@ public class WQS {
     }
   }
 
+  /**
+   * Returns an arraylist of items in the inventory
+   * that are an instance of the target classname.
+   *
+   * @param target
+   * @return Matching items
+   * */
   private ArrayList<Item> getItemsByClass(String target) {
     ArrayList<Item> res = new ArrayList<Item>();
     Class<?> targetclass;
@@ -52,6 +76,14 @@ public class WQS {
     return res;
   }
 
+  /**
+   * Handles logic for adding items to the inventory.
+   * Takes user input and either adds to an existing item,
+   * or calls ItemFactory.createItem() to create an entirely
+   * new item.
+   *
+   * @param in
+   * */
   private void addItem(Scanner in) {
     int choice;
     while (true) {
@@ -105,6 +137,11 @@ public class WQS {
     }
   }
 
+  /**
+   * Prints items in a table format.
+   *
+   * @param items
+   * */
   private void printTable(ArrayList<Item> items) {
     System.out.printf("%-10s%-15s%-15s%-15s%-20s%-15s%-15s\n","Item", "Name", "Price", "Brand", "Description", "Return Policy", "Quantity");
     String str = "-";
@@ -116,6 +153,13 @@ public class WQS {
     System.out.println();
   }
 
+
+  /**
+   * Calculates tax, subtotal and final total.
+   * Prints an order summary.
+   *
+   * @param items
+   * */
   private void printOrderSummary(ArrayList<Item> items) {
     // "Displays an order summary (group item types together in output)"
     int count = 0;
@@ -132,6 +176,15 @@ public class WQS {
     System.out.printf("Order Summary: \nTotal Items: %d \nSubtotal: $%.2f \nTaxes: $%.2f \nTotal Price: $%.2f\n", count, subtotal, taxes, totalPrice);
   }
 
+
+  /**
+   * Handles logic for adding an item to the cart in sellItem()
+   * Copies information over to common ancestor (Item)
+   * to avoid unwanted side effects.
+   *
+   * @param cart The items in the user's cart
+   * @param selection The item being added
+   * */
   private void addToCart(ArrayList<Item> cart, Item selection) {
     // remove one item from inventory
     int index = inventory.indexOf(selection);
@@ -158,6 +211,14 @@ public class WQS {
     cart.add(copy);
   }
 
+  /**
+   * Handles logic for selling items. Takes user input and
+   * adds the selected items to the cart using addToCart().
+   * Displays the order summary when the user decides to 
+   * checkout.
+   * 
+   * @param in
+   * */
   private void sellItem(Scanner in) {
     ArrayList<Item> cart = new ArrayList<Item>();
     int choice;
@@ -202,6 +263,10 @@ public class WQS {
     }
   }
 
+  /**
+   * Creates an instance of WQS. Takes user input in a loop.
+   * Runs functions to handle each option.
+   * */
   public static void main(String[] args) {
     WQS store = new WQS();
     store.generateInventory();
@@ -213,7 +278,6 @@ public class WQS {
         case 1 -> store.addItem(in);
         case 2 -> store.sellItem(in);
         case 3 -> store.printItems(store.inventory);
-        case 7 -> store.printOrderSummary(store.inventory); // test choice for tables 
         case 0 ->  {
           System.out.println("Exiting.");
           in.close();
