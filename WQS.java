@@ -13,6 +13,10 @@ public class WQS {
 
   ArrayList<Item> inventory;
 
+
+  /**
+   * Creates an instance of WQS.
+   * */
   public WQS() {
     inventory = new ArrayList<Item>();
   }
@@ -43,6 +47,10 @@ public class WQS {
     return Utils.getInt(in, "Input: ");
   }
 
+  /**
+   * Prints items.
+   * @param items A list of items to be printed.
+   * */
   private void printItems(ArrayList<Item> items) {
     System.out.println();
     int index = 1;
