@@ -3,6 +3,8 @@ Todo:
 1. Create UML documents
 
 2. Javadoc Comments:
+
+Taylor:
     - CleaningSupply.java
     - ElectronicItem.java
     - FoodItem.java
@@ -11,6 +13,8 @@ Todo:
     - HouseholdItem.java
     - (Complete) Item.java
     - (Complete) ItemFactory.java
+
+Thomas:
     - Laptop.java
     - Outerwear.java
     - Phone.java
