@@ -8,6 +8,14 @@ public class Item {
   private int returnPolicy;
   private double tax;
 
+
+  /**
+   * Creates an instance of Item.
+   * @param name
+   * @param price
+   * @param brand
+   * @param description
+   * */
   public Item(String name, double price, String brand, String description) {
     this.quantity = 1;
     this.returnPolicy = 30;
