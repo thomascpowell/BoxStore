@@ -7,6 +7,10 @@ public class CleaningSupply extends HouseholdItem {
     this.sprayBottle = sprayBottle;
   }
 
+  /**
+   * Returns sprayBottle.
+   * @return 
+   * */
   public boolean isSprayBottle() {
     return sprayBottle;
   }

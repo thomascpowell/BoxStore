@@ -9,7 +9,7 @@ Todo:
     - Fruit.java
     - Furniture.java
     - HouseholdItem.java
-    - Item.java
+    - (Complete) Item.java
     - (Complete) ItemFactory.java
     - Laptop.java
     - Outerwear.java
