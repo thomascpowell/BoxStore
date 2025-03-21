@@ -5,7 +5,6 @@
  * Purpose: Manage inventory for Wilmington Quick Shop using polymorphism.
  * */
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 

@@ -24,6 +24,6 @@ Thomas:
 - StoreItem.java
 - TV.java
 - (Complete) Utils.java
-- Vegetable.java
+- (Complete) Vegetable.java
 - Complete) WQS.java
 
