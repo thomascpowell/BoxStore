@@ -25,5 +25,5 @@ Thomas:
 - (Complete) TV.java
 - (Complete) Utils.java
 - (Complete) Vegetable.java
-- Complete) WQS.java
+- (Complete) WQS.java
 
