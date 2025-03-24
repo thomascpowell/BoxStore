@@ -21,7 +21,7 @@ Thomas:
 - ShelfStable.java
 - Shirt.java
 - Shoe.java
-- StoreItem.java
+- (Complete) StoreItem.java
 - (Complete) TV.java
 - (Complete) Utils.java
 - (Complete) Vegetable.java
