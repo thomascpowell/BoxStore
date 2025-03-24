@@ -1,3 +1,10 @@
+/**
+ * @author Thomas Powell, Dimitiri Montgomery, Taylor Waldo
+ * Date: March 27, 2025
+ * Section: CSC 331-002
+ * Purpose: Define the TV class.
+ * */
+
 public class TV extends ElectronicItem {
 
   private String resolution;

@@ -1,3 +1,10 @@
+/**
+ * @author Thomas Powell, Dimitiri Montgomery, Taylor Waldo
+ * Date: March 27, 2025
+ * Section: CSC 331-002
+ * Purpose: Define the Vegetable class.
+ * */
+
 public class Vegetable extends FoodItem {
   
   private boolean green;

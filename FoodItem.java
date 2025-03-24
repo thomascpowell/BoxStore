@@ -1,3 +1,10 @@
+/**
+ * @author Thomas Powell, Dimitiri Montgomery, Taylor Waldo
+ * Date: March 27, 2025
+ * Section: CSC 331-002
+ * Purpose: Define the FoodItem class.
+ * */
+
 public class FoodItem extends Item {
 
   public String expiration;
