@@ -20,7 +20,7 @@ Thomas:
 - Phone.java
 - ShelfStable.java
 - Shirt.java
-- Shoe.java
+- (Complete) Shoe.java
 - (Complete) StoreItem.java
 - (Complete) TV.java
 - (Complete) Utils.java
