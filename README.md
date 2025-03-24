@@ -11,8 +11,6 @@ Taylor:
 - Fruit.java
 - Furniture.java
 - HouseholdItem.java
-- (Complete) Item.java
-- (Complete) ItemFactory.java
 
 Thomas:
 - (Complete) Laptop.java
@@ -26,4 +24,6 @@ Thomas:
 - (Complete) Utils.java
 - (Complete) Vegetable.java
 - (Complete) WQS.java
+- (Complete) Item.java
+- (Complete) ItemFactory.java
 
