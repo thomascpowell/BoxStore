@@ -137,12 +137,20 @@ public class Item {
   public void setDescription(String description) {
     this.description = description;
   }
+
+  /**
+   * Creates the toString method.
+   * @return The string representation.
+   * */
+  public String toString() {
+    return String.format("Quantity: %d; Name: %s; Price: %.2f",
+    this.getQuantity(), this.getName(), this.getPrice());
+  }
   
   /**
    * Compares Items based on class and name.
    * @return The truth value.
    * */
-  @Override
   public boolean equals(Object obj) {
     if (this.getClass() != obj.getClass()) {
       return false;

@@ -2,7 +2,7 @@
  * @author Thomas Powell, Dimitiri Montgomery, Taylor Waldo
  * Date: March 27, 2025
  * Section: CSC 331-002
- * Purpose: Manage inventory for Wilmington Quick Shop using polymorphism.
+ * Purpose: Manage inventory for the Wilmington Quick Shop using polymorphism.
  * */
 
 import java.util.ArrayList;
@@ -48,6 +48,7 @@ public class WQS {
 
   /**
    * Prints items.
+   * Uses polymorphism in the form of toString methods.
    * @param items A list of items to be printed.
    * */
   private void printItems(ArrayList<Item> items) {

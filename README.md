@@ -22,7 +22,7 @@ Thomas:
 - Shirt.java
 - Shoe.java
 - StoreItem.java
-- TV.java
+- (Complete) TV.java
 - (Complete) Utils.java
 - (Complete) Vegetable.java
 - Complete) WQS.java
