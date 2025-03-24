@@ -18,6 +18,7 @@ public class Vegetable extends FoodItem {
 
   /**
    * Returns green.
+   * @return green
    * */
   public boolean isGreen() {
     return green;
@@ -25,7 +26,7 @@ public class Vegetable extends FoodItem {
 
   /**
    * Sets green.
-   * @param green New green truth value.
+   * @param green New green value.
    * */
   public void setGreen(boolean green) {
     this.green = green;
@@ -33,6 +34,7 @@ public class Vegetable extends FoodItem {
 
   /**
    * Returns all parameters in a String.
+   * @return The string representation.
    * */
   public String toString() {
     return String.format("Quantity: %d; Name: %s; Price: %.2f; Expiration: %s; Green: %b",
