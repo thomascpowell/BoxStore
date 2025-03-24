@@ -15,11 +15,11 @@ Taylor:
 - (Complete) ItemFactory.java
 
 Thomas:
-- Laptop.java
-- Outerwear.java
-- Phone.java
-- ShelfStable.java
-- Shirt.java
+- (Complete) Laptop.java
+- (Complete) Outerwear.java
+- (Complete) Phone.java
+- (Complete) ShelfStable.java
+- (Complete) Shirt.java
 - (Complete) Shoe.java
 - (Complete) StoreItem.java
 - (Complete) TV.java
