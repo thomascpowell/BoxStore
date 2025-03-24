@@ -24,6 +24,6 @@ Thomas:
 - (Complete) Utils.java
 - (Complete) Vegetable.java
 - (Complete) WQS.java
-- Complete) Item.java
+- (Complete) Item.java
 - (Complete) ItemFactory.java
 
