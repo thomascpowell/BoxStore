@@ -67,17 +67,10 @@ public class WQS {
    * @param target
    * @return Matching items
    * */
-  private ArrayList<Item> getItemsByClass(String target) {
+  private ArrayList<Item> getItemsByClass(Class<?> type) {
     ArrayList<Item> res = new ArrayList<Item>();
-    Class<?> targetclass;
-    try {
-      targetclass = Class.forName(target);
-    } catch (ClassNotFoundException e) {
-      System.out.println("Invalid target.");
-      return res;
-    }
     for (Item item : this.inventory) {
-      if (targetclass.isInstance(item)) {
+      if (type.isInstance(item)) {
         res.add(item);
       }
     }
@@ -117,12 +110,12 @@ public class WQS {
         continue;
       }
       // match numbers to types
-      String type = switch (choice) {
-        case 1 -> "FoodItem";
-        case 2 -> "ElectronicItem";
-        case 3 -> "Outerwear";
-        case 4 -> "HouseholdItem";
-        default -> "";
+      Class<?> type = switch (choice) {
+        case 1 -> FoodItem.class;
+        case 2 -> ElectronicItem.class;
+        case 3 -> Outerwear.class;
+        case 4 -> HouseholdItem.class;
+        default -> Item.class;
       };
       // print items of type
       ArrayList<Item> items = getItemsByClass(type);
@@ -235,10 +228,10 @@ public class WQS {
       System.out.println("\nSell Item Menu: \n1: Food \n2: Electronic \n3: Outerwear \n4: Household \n0: Checkout");
       while (true) {
         choice = Utils.getInt(in, "Input: ");
-        if (0 <= choice && choice <= 5) { 
+        if (0 <= choice && choice <= 4) { 
           break; 
         } 
-        System.out.println("Expected value between 0 and 5.");
+        System.out.println("Expected value between 0 and 4.");
       }
       // checkout
       if (choice == 0) {
@@ -246,12 +239,12 @@ public class WQS {
         break;
       }
       // match numbers to types
-      String type = switch (choice) {
-        case 1 -> "FoodItem";
-        case 2 -> "ElectronicItem";
-        case 3 -> "Outerwear";
-        case 4 -> "HouseholdItem";
-        default -> "";
+      Class<?> type = switch (choice) {
+        case 1 -> FoodItem.class;
+        case 2 -> ElectronicItem.class;
+        case 3 -> Outerwear.class;
+        case 4 -> HouseholdItem.class;
+        default -> Item.class;
       };
       // print items of type
       ArrayList<Item> items = getItemsByClass(type);
