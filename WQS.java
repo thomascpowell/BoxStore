@@ -25,7 +25,7 @@ public class WQS {
    * */
   private void generateInventory() {
     this.inventory.add(new Fruit("apple", 2, "", "desc", "3/1/25", false));
-    this.inventory.add(new Fruit("lemon", 2, "", "desc", "3/1/25", true)); 
+    this.inventory.add(new Fruit("lemon", 2, "", "desc", "3/1/25", true));
     this.inventory.add(new Furniture("table", 400, "wayfair", "desc", false, "glass", 4));
     this.inventory.add(new Laptop("macbook", 7, "apple", "desc", true, 2010, "pentium dual core"));
     this.inventory.add(new Phone("3310", 23, "nokia", "desc", false, 2000, "brick"));
@@ -42,7 +42,14 @@ public class WQS {
    * @return The user's selection
    * */
   private int menu(Scanner in) {
-    System.out.print("\n\nWQS Store Menu: \n1: Add Item \n2: Sell Item \n3: Display Inventory \n0: Exit Program \n");
+    UIHelper.printHeader("WQS STORE MENU");
+    String[] options = {
+            "1: Add Item",
+            "2: Sell Item",
+            "3: Display Inventory",
+            "0: Exit Program"
+    };
+    UIHelper.printBoxedMenu("Main Menu", options);
     return Utils.getInt(in, "Input: ");
   }
 
@@ -52,10 +59,16 @@ public class WQS {
    * @param items A list of items to be printed.
    * */
   private void printItems(ArrayList<Item> items) {
-    System.out.println();
+    UIHelper.printHeader("INVENTORY ITEMS");
+    if (items.isEmpty()) {
+      System.out.println("No items available.");
+      return;
+    }
+
     int index = 1;
     for (Item item : items) {
       System.out.println("Item #" + index + ": " + item);
+      System.out.println(UIHelper.THIN_DIVIDER);
       index++;
     }
   }
@@ -96,10 +109,20 @@ public class WQS {
     int choice;
     while (true) {
       // menu, input validation
-      System.out.println("\nAdd Item Menu: \n1: Food \n2: Electronic \n3: Outerwear \n4: Household \n5: New Item \n0: Exit");
+      UIHelper.printHeader("ADD ITEM MENU");
+      String[] options = {
+              "1: Food",
+              "2: Electronic",
+              "3: Outerwear",
+              "4: Household",
+              "5: New Item",
+              "0: Exit"
+      };
+      UIHelper.printBoxedMenu("Select Item Type", options);
+
       while (true) {
         choice = Utils.getInt(in, "Input: ");
-        if (0 <= choice && choice <= 5) { break; } 
+        if (0 <= choice && choice <= 5) { break; }
         System.out.println("Expected value between 0 and 5.");
       }
       // exit
@@ -113,6 +136,7 @@ public class WQS {
         Item res = ItemFactory.createItem(Utils.getString(in, "New Item Type: "));
         if (res != null) {
           inventory.add(res);
+          System.out.println("\n" + UIHelper.BOX_VERTICAL + " Item added successfully! " + UIHelper.BOX_VERTICAL);
         }
         continue;
       }
@@ -128,9 +152,10 @@ public class WQS {
       ArrayList<Item> items = getItemsByClass(type);
 
       if (items.size() == 0) {
-        System.out.println("No items right now.");
+        System.out.println("\n" + UIHelper.BOX_VERTICAL + " No items available for this category. " + UIHelper.BOX_VERTICAL);
         continue;
       } else {
+        UIHelper.printHeader("AVAILABLE " + type.toUpperCase() + " ITEMS");
         this.printItems(items);
       }
       // add to an item
@@ -138,9 +163,10 @@ public class WQS {
       if (0 < choice && choice < items.size()+1) {
         Item selection = items.get(choice-1);
         selection.setQuantity(
-          selection.getQuantity() + 
-          Utils.getInt(in, String.format("How many %ss should be added? ", selection.getName()))
+                selection.getQuantity() +
+                        Utils.getInt(in, String.format("How many %ss should be added? ", selection.getName()))
         );
+        System.out.println("\n" + UIHelper.BOX_VERTICAL + " Quantity updated successfully! " + UIHelper.BOX_VERTICAL);
       }
     }
   }
@@ -151,16 +177,31 @@ public class WQS {
    * @param items
    * */
   private void printTable(ArrayList<Item> items) {
-    System.out.printf("%-10s%-15s%-15s%-15s%-20s%-15s%-15s\n","Item", "Name", "Price", "Brand", "Description", "Return Policy", "Quantity");
-    String str = "-";
-    System.out.println(str.repeat(99));
+    // Convert items to table data format
+    String[] headers = {"Item", "Name", "Price", "Brand", "Description", "Return Policy", "Quantity"};
+    ArrayList<String[]> data = new ArrayList<>();
+
     int count = 1;
     for (Item item : items) {
-      System.out.printf("%-10d%-15s%-15.2f%-15s%-25s%-15d%-15s\n",count++, item.getName(), item.getPrice(), item.getBrand(), item.getDescription(), item.getReturnPolicy(), item.getQuantity());
+      String returnPolicy = item.getReturnPolicy() > 0 ? item.getReturnPolicy() + " days" : "None";
+      String[] row = {
+              String.valueOf(count++),
+              item.getName(),
+              String.format("$%.2f", item.getPrice()),
+              item.getBrand(),
+              item.getDescription(),
+              returnPolicy,
+              String.valueOf(item.getQuantity())
+      };
+      data.add(row);
     }
-    System.out.println();
-  }
 
+    // Define column widths
+    int[] columnWidths = {6, 12, 10, 12, 20, 15, 10};
+
+    // Print the formatted table
+    UIHelper.printTable(headers, data, columnWidths);
+  }
 
   /**
    * Calculates tax, subtotal and final total.
@@ -179,9 +220,10 @@ public class WQS {
       taxes += item.getPrice() * item.getTax() * item.getQuantity();
     }
     double totalPrice = taxes + subtotal;
-    System.out.println("\nCart:");
+
+    UIHelper.printHeader("YOUR CART");
     printTable(items);
-    System.out.printf("Order Summary: \nTotal Items: %d \nSubtotal: $%.2f \nTaxes: $%.2f \nTotal Price: $%.2f\n", count, subtotal, taxes, totalPrice);
+    UIHelper.printOrderSummaryBox(count, subtotal, taxes, totalPrice);
   }
 
 
@@ -200,31 +242,33 @@ public class WQS {
       inventory.remove(index);
     } else {
       inventory.get(index).setQuantity(selection.getQuantity()-1);
-    } 
+    }
     // copy to ancestor
     Item copy = new Item(
-      selection.getName(),
-      selection.getPrice(),
-      selection.getBrand(),
-      selection.getDescription()
+            selection.getName(),
+            selection.getPrice(),
+            selection.getBrand(),
+            selection.getDescription()
     );
     copy.setTax(selection.getTax());
     // check if item type is already in cart
     for (Item item : cart) {
       if (copy.equals(item)) {
         item.setQuantity(item.getQuantity()+1);
+        System.out.println("\n" + UIHelper.BOX_VERTICAL + " Item added to cart! " + UIHelper.BOX_VERTICAL);
         return;
       }
     }
     cart.add(copy);
+    System.out.println("\n" + UIHelper.BOX_VERTICAL + " Item added to cart! " + UIHelper.BOX_VERTICAL);
   }
 
   /**
    * Handles logic for selling items. Takes user input and
    * adds the selected items to the cart using addToCart().
-   * Displays the order summary when the user decides to 
+   * Displays the order summary when the user decides to
    * checkout.
-   * 
+   *
    * @param in
    * */
   private void sellItem(Scanner in) {
@@ -232,12 +276,21 @@ public class WQS {
     int choice;
     while (true) {
       // menu, input validation
-      System.out.println("\nSell Item Menu: \n1: Food \n2: Electronic \n3: Outerwear \n4: Household \n0: Checkout");
+      UIHelper.printHeader("SELL ITEM MENU");
+      String[] options = {
+              "1: Food",
+              "2: Electronic",
+              "3: Outerwear",
+              "4: Household",
+              "0: Checkout"
+      };
+      UIHelper.printBoxedMenu("Select Category", options);
+
       while (true) {
         choice = Utils.getInt(in, "Input: ");
-        if (0 <= choice && choice <= 5) { 
-          break; 
-        } 
+        if (0 <= choice && choice <= 5) {
+          break;
+        }
         System.out.println("Expected value between 0 and 5.");
       }
       // checkout
@@ -256,10 +309,10 @@ public class WQS {
       // print items of type
       ArrayList<Item> items = getItemsByClass(type);
       if (items.size() == 0) {
-        System.out.println("No items right now.");
+        System.out.println("\n" + UIHelper.BOX_VERTICAL + " No items available for this category. " + UIHelper.BOX_VERTICAL);
         continue;
       } else {
-        System.out.println("\nAvailable Items: ");
+        UIHelper.printHeader("AVAILABLE " + type.toUpperCase() + " ITEMS");
         this.printTable(items);
       }
       // add item to cart
@@ -279,6 +332,11 @@ public class WQS {
     WQS store = new WQS();
     store.generateInventory();
     Scanner in = new Scanner(System.in);
+
+    UIHelper.printHeader("WELCOME TO WQS STORE");
+    System.out.println(UIHelper.centerText("Your one-stop shop for all your needs", UIHelper.DIVIDER.length()));
+    System.out.println();
+
     int choice;
     loop: while (true) {
       choice = store.menu(in);
@@ -287,7 +345,8 @@ public class WQS {
         case 2 -> store.sellItem(in);
         case 3 -> store.printItems(store.inventory);
         case 0 ->  {
-          System.out.println("Exiting.");
+          UIHelper.printHeader("THANK YOU FOR SHOPPING WITH US");
+          System.out.println(UIHelper.centerText("Goodbye!", UIHelper.DIVIDER.length()));
           in.close();
           break loop;
         }
