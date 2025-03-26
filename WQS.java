@@ -141,6 +141,15 @@ public class WQS {
         case 4 -> HouseholdItem.class;
         default -> Item.class;
       };
+
+      // cool switch statement
+      String friendlyName = switch (choice) {
+        case 1 -> "FOOD";
+        case 2 -> "ELECTRONIC";
+        case 3 -> "OUTERWEAR";
+        case 4 -> "HOUSEHOLD";
+        default -> "ITEM";
+      };
       // print items of type
       ArrayList<Item> items = getItemsByClass(type);
 
@@ -148,7 +157,7 @@ public class WQS {
         System.out.println("\n" + UIHelper.BOX_VERTICAL + " No items available for this category. " + UIHelper.BOX_VERTICAL);
         continue;
       } else {
-        UIHelper.printHeader("AVAILABLE " + type.toUpperCase() + " ITEMS");
+        UIHelper.printHeader("AVAILABLE " + friendlyName + " ITEMS");
         this.printItems(items);
       }
       // add to an item
@@ -299,13 +308,20 @@ public class WQS {
         case 4 -> HouseholdItem.class;
         default -> Item.class;
       };
+      String friendlyName = switch (choice) {
+        case 1 -> "FOOD";
+        case 2 -> "ELECTRONIC";
+        case 3 -> "OUTERWEAR";
+        case 4 -> "HOUSEHOLD";
+        default -> "ITEM";
+      };
       // print items of type
       ArrayList<Item> items = getItemsByClass(type);
       if (items.size() == 0) {
         System.out.println("\n" + UIHelper.BOX_VERTICAL + " No items available for this category. " + UIHelper.BOX_VERTICAL);
         continue;
       } else {
-        UIHelper.printHeader("AVAILABLE " + type.toUpperCase() + " ITEMS");
+        UIHelper.printHeader("AVAILABLE " + friendlyName + " ITEMS");
         this.printTable(items);
       }
       // add item to cart

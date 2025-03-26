@@ -1,3 +1,10 @@
+/**
+ * @author Thomas Powell, Dimitiri Montgomery, Taylor Waldo
+ * Date: March 27, 2025
+ * Section: CSC 331-002
+ * Purpose: Define user interface function.
+ * */
+
 import java.util.ArrayList;
 
 /**
@@ -47,7 +54,7 @@ public class UIHelper {
                 maxLength = option.length();
             }
         }
-        maxLength += 10; // Add padding
+        maxLength += 41; // Add padding
 
         // Top border
         System.out.println();
@@ -62,14 +69,14 @@ public class UIHelper {
 
         // Divider
         System.out.print(BOX_VERTICAL + " ");
-        for (int i = 0; i < maxLength - 4; i++) {
+        for (int i = 0; i < maxLength - 2; i++) {
             System.out.print("─");
         }
         System.out.println(" " + BOX_VERTICAL);
 
         // Options
         for (int i = 0; i < options.length; i++) {
-            System.out.println(BOX_VERTICAL + " " + options[i] + " ".repeat(maxLength - options[i].length() - 2) + BOX_VERTICAL);
+            System.out.println(BOX_VERTICAL + " " + options[i] + " ".repeat(maxLength - options[i].length() - 1) + BOX_VERTICAL);
         }
 
         // Bottom border
