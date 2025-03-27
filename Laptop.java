@@ -43,8 +43,10 @@ public class Laptop extends ElectronicItem {
    * Overrides the toString method.
    * @return The string representation.
    * */
+  @Override
   public String toString() {
-    return String.format("Quantity: %d; Name: %s; Price: %.2f; Fragile: %b; Release: %d; Processor: %s",
-    this.getQuantity(), this.getName(), this.getPrice(), this.isFragile(), this.getReleaseYear(), this.getProcessor());
+    return String.format("%s; Processor: %s",
+    super.toString(), this.getProcessor());
   }
+
 }

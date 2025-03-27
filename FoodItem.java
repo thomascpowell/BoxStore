@@ -43,4 +43,14 @@ public class FoodItem extends Item {
   public void setExpiration(String expiration) {
     this.expiration = expiration;
   }
+
+  /**
+   * Overrides the toString method.
+   * @return The string representation.
+   * */
+  @Override
+  public String toString() {
+    return String.format("%s; Expiration: %s days",
+    super.toString(), this.getExpiration());
+  }
 }

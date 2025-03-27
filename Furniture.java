@@ -47,13 +47,13 @@ public class Furniture extends HouseholdItem {
   }
 
   /**
-   * Creates display text for inventory listings.
-   *
-   * @return Formatted furniture information
-   */
-
+   * Overrides the toString method.
+   * @return The string representation.
+   * */
+  @Override
   public String toString() {
-    return String.format("Quantity: %d; Name: %s; Price: %.2f; Fragile: %b; Material: %s; Legs: %d",
-    this.getQuantity(), this.getName(), this.getPrice(), this.isFragile(), this.getMaterial(), this.getLegs());
+    return String.format("%s; Legs: %d",
+    super.toString(), this.getLegs());
   }
+
 }

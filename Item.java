@@ -150,8 +150,8 @@ public class Item {
    * @return The string representation.
    * */
   public String toString() {
-    return String.format("Quantity: %d; Name: %s; Price: %.2f",
-    this.getQuantity(), this.getName(), this.getPrice());
+    return String.format("Quantity: %d; Name: %s; Brand: %s; Desc: %s; Price: $%.2f; Return: %s days; Tax: %s%%",
+    this.getQuantity(), this.getName(), this.getBrand(), this.getDescription(), this.getPrice(), this.getReturnPolicy(), this.getTax()*100);
   }
   
   /**

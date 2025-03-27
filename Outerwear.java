@@ -39,4 +39,13 @@ public class Outerwear extends StoreItem {
     this.size = size;
   }
 
+  /**
+   * Overrides the toString method.
+   * @return The string representation.
+   * */
+  @Override
+  public String toString() {
+    return String.format("%s; Size: %s",
+    super.toString(), this.getSize());
+  }
 }

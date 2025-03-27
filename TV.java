@@ -44,8 +44,10 @@ public class TV extends ElectronicItem {
    * Overrides the toString method.
    * @return The string representation.
    * */
+  @Override
   public String toString() {
-    return String.format("Quantity: %d; Name: %s; Price: %.2f; Fragile: %b; Release: %d; Resolution: %s",
-    this.getQuantity(), this.getName(), this.getPrice(), this.isFragile(), this.getReleaseYear(), this.getResolution());
+    return String.format("%s; Resolution: %s",
+    super.toString(), this.getResolution());
   }
+
 }

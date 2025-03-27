@@ -40,12 +40,15 @@ public class Shirt extends Outerwear {
     this.color = color;
   }
 
-  /**   
+
+  /**
    * Overrides the toString method.
    * @return The string representation.
    * */
+  @Override
   public String toString() {
-    return String.format("Quantity: %d; Name: %s; Price: %.2f; Fragile: %b; Size: %d; Color: %s",
-    this.getQuantity(), this.getName(), this.getPrice(), this.isFragile(), this.getSize(), this.getColor());
+    return String.format("%s; Color: %s",
+    super.toString(), this.getColor());
   }
+
 }

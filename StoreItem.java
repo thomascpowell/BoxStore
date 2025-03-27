@@ -37,4 +37,15 @@ public class StoreItem extends Item {
   public void setFragile(boolean fragile) {
     this.fragile = fragile;
   } 
+
+  /**
+   * Overrides the toString method.
+   * @return The string representation.
+   * */
+  @Override
+  public String toString() {
+    return String.format("%s; Fragile: %b",
+    super.toString(), this.isFragile());
+  }
+
 }

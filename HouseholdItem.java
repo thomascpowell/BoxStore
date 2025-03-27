@@ -45,4 +45,14 @@ public class HouseholdItem extends StoreItem {
   public void setMaterial(String material) {
     this.material = material;
   }
+
+  /**
+   * Overrides the toString method.
+   * @return The string representation.
+   * */
+  @Override
+  public String toString() {
+    return String.format("%s; Material: %s",
+    super.toString(), this.getMaterial());
+  }
 }

@@ -40,12 +40,13 @@ public class Shoe extends Outerwear {
     this.hightop = hightop;
   }
 
-  /**   
+  /**
    * Overrides the toString method.
    * @return The string representation.
    * */
+  @Override
   public String toString() {
-    return String.format("Quantity: %d; Name: %s; Price: %.2f; Fragile: %b; Size: %d; Hightop: %b",
-    this.getQuantity(), this.getName(), this.getPrice(), this.isFragile(), this.getSize(), this.isHightop());
+    return String.format("%s; Hightop: %b",
+    super.toString(), this.isHightop());
   }
 }

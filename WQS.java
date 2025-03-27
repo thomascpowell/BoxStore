@@ -2,7 +2,7 @@
  * @author Thomas Powell, Dimitiri Montgomery, Taylor Waldo
  * Date: March 27, 2025
  * Section: CSC 331-002
- * Purpose: Manage inventory for the Wilmington Quick Shop using polymorphism.
+ * Purpose: Manage inventory for the Wilmington Quick Shop.
  * */
 
 import java.util.ArrayList;
@@ -24,15 +24,15 @@ public class WQS {
    * Generates sample inventory items.
    * */
   private void generateInventory() {
-    this.inventory.add(new Fruit("apple", 2, "", "desc", "3/1/25", false));
-    this.inventory.add(new Fruit("lemon", 2, "", "desc", "3/1/25", true));
-    this.inventory.add(new Furniture("table", 400, "wayfair", "desc", false, "glass", 4));
-    this.inventory.add(new Laptop("macbook", 7, "apple", "desc", true, 2010, "pentium dual core"));
-    this.inventory.add(new Phone("3310", 23, "nokia", "desc", false, 2000, "brick"));
-    this.inventory.add(new Shirt("shirt", 30, "nike", "desc", false, 2, "gray"));
-    this.inventory.add(new Shoe("shoe", 400, "adidas", "desc", false, 2, false));
-    this.inventory.add(new TV("tv", 75, "samsung", "desc", true, 2022, "720p"));
-    this.inventory.add(new Vegetable("carrot", 2, "", "desc", "3/2/11", false));
+    this.inventory.add(new Fruit("Apple", 2, "", "Honeycrisp", "3/1/25", false));
+    this.inventory.add(new Fruit("Lemon", 2, "", "", "3/1/25", true));
+    this.inventory.add(new Furniture("Table", 400, "Wayfair", "Modern design", true, "Glass", 4));
+    this.inventory.add(new Laptop("Macbook", 700, "Apple", "Space gray", true, 2021, "M1"));
+    this.inventory.add(new Phone("3310", 23, "Nokia", "Cell", false, 200, "Brick"));
+    this.inventory.add(new Shirt("Shirt", 30, "Nike", "Dry Fit", false, 2, "Gray"));
+    this.inventory.add(new Shoe("Shoe", 400, "Adidas", "Running shoes", false, 2, false));
+    this.inventory.add(new TV("TV", 60, "Samsung", "Smart TV", true, 2010, "720p"));
+    this.inventory.add(new Vegetable("carrot", 2, "", "", "3/2/11", false));
   }
 
   /**
@@ -55,7 +55,9 @@ public class WQS {
 
   /**
    * Prints items.
-   * Uses polymorphism in the form of toString methods.
+   * Uses polymorphism in the form of toString overrides.
+   * The ArrayList<Item> also polymorphically handles
+   * all subtypes of Item.
    * @param items A list of items to be printed.
    * */
   private void printItems(ArrayList<Item> items) {
@@ -64,7 +66,6 @@ public class WQS {
       System.out.println("No items available.");
       return;
     }
-
     int index = 1;
     for (Item item : items) {
       System.out.println("Item #" + index + ": " + item);
@@ -141,8 +142,6 @@ public class WQS {
         case 4 -> HouseholdItem.class;
         default -> Item.class;
       };
-
-      // cool switch statement
       String friendlyName = switch (choice) {
         case 1 -> "FOOD";
         case 2 -> "ELECTRONIC";

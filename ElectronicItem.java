@@ -47,4 +47,14 @@ public class ElectronicItem extends StoreItem {
   public void setReleaseYear(int releaseYear) {
     this.releaseYear = releaseYear;
   }
+
+  /**
+   * Overrides the toString method.
+   * @return The string representation.
+   * */
+  @Override
+  public String toString() {
+    return String.format("%s; Year: %s",
+    super.toString(), this.getReleaseYear());
+  }
 }

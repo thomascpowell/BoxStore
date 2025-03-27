@@ -49,13 +49,13 @@ public class CleaningSupply extends HouseholdItem {
   }
 
   /**
-   * Formats item details for inventory listings and receipts.
-   *
-   * @return a formatted string representation of the cleaning supply
-   */
-
+   * Overrides the toString method.
+   * @return The string representation.
+   * */
+  @Override
   public String toString() {
-    return String.format("Quantity: %d; Name: %s; Price: %d; Fragile: %b; Material: %s; Spray Bottle: %b",
-    this.getQuantity(), this.getName(), this.getPrice(), this.isFragile(), this.getMaterial(), this.isSprayBottle());
+    return String.format("%s; Spray Bottle: %b",
+    super.toString(), this.isSprayBottle());
   }
+
 }
