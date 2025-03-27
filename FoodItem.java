@@ -50,7 +50,7 @@ public class FoodItem extends Item {
    * */
   @Override
   public String toString() {
-    return String.format("%s; Expiration: %s days",
+    return String.format("%s; Expiration: %s",
     super.toString(), this.getExpiration());
   }
 }
