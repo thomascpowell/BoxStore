@@ -24,15 +24,15 @@ public class WQS {
    * Generates sample inventory items.
    * */
   private void generateInventory() {
-    this.inventory.add(new Fruit("Apple", 2, "", "Honeycrisp", "3/1/25", false));
-    this.inventory.add(new Fruit("Lemon", 2, "", "", "3/1/25", true));
+    this.inventory.add(new Fruit("Apple", 2, "N/A", "Honeycrisp", "3/1/25", false));
+    this.inventory.add(new Fruit("Lemon", 2, "N/A", "N/A", "3/1/25", true));
     this.inventory.add(new Furniture("Table", 400, "Wayfair", "Modern design", true, "Glass", 4));
     this.inventory.add(new Laptop("Macbook", 700, "Apple", "Space gray", true, 2021, "M1"));
     this.inventory.add(new Phone("3310", 23, "Nokia", "Cell", false, 200, "Brick"));
     this.inventory.add(new Shirt("Shirt", 30, "Nike", "Dry Fit", false, 2, "Gray"));
     this.inventory.add(new Shoe("Shoe", 400, "Adidas", "Running shoes", false, 2, false));
     this.inventory.add(new TV("TV", 60, "Samsung", "Smart TV", true, 2010, "720p"));
-    this.inventory.add(new Vegetable("carrot", 2, "", "", "3/2/11", false));
+    this.inventory.add(new Vegetable("carrot", 2, "N/A", "N/A", "3/2/11", false));
   }
 
   /**
@@ -252,6 +252,7 @@ public class WQS {
             selection.getDescription()
     );
     copy.setTax(selection.getTax());
+    copy.setReturnPolicy(selection.getReturnPolicy());
     // check if item type is already in cart
     for (Item item : cart) {
       if (copy.equals(item)) {

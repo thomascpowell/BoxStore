@@ -43,13 +43,12 @@ public class Fruit extends FoodItem {
   }
 
   /**
-   * Creates display text for labels and reports.
-   *
-   * @return Formatted fruit information
-   */
-
+   * Overrides the toString method.
+   * @return The string representation.
+   * */
+  @Override
   public String toString() {
-    return String.format("Quantity: %d; Name: %s; Price: %.2f; Expiration: %s; Citrus: %b",
-    this.getQuantity(), this.getName(), this.getPrice(), this.getExpiration(), this.isCitrus());
+    return String.format("%s; Citrus: %b",
+    super.toString(), this.isCitrus());
   }
 }

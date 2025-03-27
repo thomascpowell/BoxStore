@@ -40,11 +40,12 @@ public class Vegetable extends FoodItem {
   }
 
   /**
-   * Returns all parameters in a String.
+   * Overrides the toString method.
    * @return The string representation.
    * */
+  @Override
   public String toString() {
-    return String.format("Quantity: %d; Name: %s; Price: %.2f; Expiration: %s; Green: %b",
-    this.getQuantity(), this.getName(), this.getPrice(), this.getExpiration(), this.isGreen());
+    return String.format("%s; Green: %b",
+    super.toString(), this.isGreen());
   }
 }

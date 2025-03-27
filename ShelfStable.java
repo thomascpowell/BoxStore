@@ -38,4 +38,14 @@ public class ShelfStable extends FoodItem {
   public void setPackaging(String packaging) {
     this.packaging = packaging;
   }
+
+  /**
+   * Overrides the toString method.
+   * @return The string representation.
+   * */
+  @Override
+  public String toString() {
+    return String.format("%s; Packaging: %s",
+    super.toString(), this.getPackaging());
+  }
 }
